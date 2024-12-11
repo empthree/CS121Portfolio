@@ -1,0 +1,2 @@
+public class act35 {
+}

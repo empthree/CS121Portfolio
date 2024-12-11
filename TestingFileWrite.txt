@@ -1,0 +1,4 @@
+<User Name>          <Password>           <Score>           <Player Character>   <Winning Percentage>
+ emma                 sdfkjdsf             300    joe                     23.32
+ joe                  fsdfsdfdf            321    eeejee                  23.67
+ emma                 fsdofhasdf              233                     Joe           32.68
