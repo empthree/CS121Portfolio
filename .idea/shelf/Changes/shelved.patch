@@ -1,0 +1,4263 @@
+Index: src/linkedListActivity/FlightReservation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/linkedListActivity/FlightReservation.java b/src/linkedListActivity/FlightReservation.java
+new file mode 100644
+--- /dev/null	(date 1730601639735)
++++ b/src/linkedListActivity/FlightReservation.java	(date 1730601639735)
+@@ -0,0 +1,50 @@
++package linkedListActivity;
++
++import java.util.LinkedList;
++
++public class FlightReservation {
++
++    private String passengerName;
++    private String flightNumber;
++    private String seatNumber;
++
++    // LinkedList reservations
++
++    private LinkedList<String> reservationHistory = new LinkedList<>();
++
++    // constructor
++
++    public FlightReservation(String passengerName, String flightNumber, String seatNumber) {
++
++        this.passengerName = passengerName;
++        this.flightNumber = flightNumber;
++        this.seatNumber = seatNumber;
++        this.reservationHistory = new LinkedList<>();
++    }
++
++    //methods
++
++    public void addReservation(String reservationDetails){
++
++        reservationHistory.add(reservationDetails);
++
++    }
++
++    public void removeReservation(){
++
++        reservationHistory.removeFirst();
++
++    }
++
++    public String getReservationInfo(){
++        return String.format("Passenger name: %s\nFlight number: %s\nSeat number: %s", passengerName, flightNumber, seatNumber);
++    }
++
++    public void displayReservationHistory(){
++        for (String reservation : reservationHistory){
++            System.out.println(reservation);
++        }
++    }
++}
++
++
+Index: src/weekOne/Firstcodewithme.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekOne/Firstcodewithme.java b/src/weekOne/Firstcodewithme.java
+new file mode 100644
+--- /dev/null	(date 1724424008337)
++++ b/src/weekOne/Firstcodewithme.java	(date 1724424008337)
+@@ -0,0 +1,32 @@
++package weekOne;
++
++public class Firstcodewithme {
++    public static void main(String[] args) {
++        //Declaring
++        int age;
++        double gpa;
++        char letterGrade;
++        boolean csMajor;
++        String name;
++
++        //Initializing
++        age = 19;
++        gpa = 3.6;
++        letterGrade = 'A';
++        csMajor = true;
++        name = "Emma";
++
++        String favoriteColor = "Green";
++
++        //Printing
++        System.out.println();
++        System.out.print("");
++        System.out.printf("The age of this person is: %d%n",age);
++        System.out.printf("The gpa is: %.2f%n", gpa);
++        System.out.printf("The letter grade is: %c%n", letterGrade);
++        System.out.printf("Is it true that your major is Computer Science? %b%n", csMajor);
++        System.out.printf("This person's name is: %s%n", name);
++        System.out.printf("This person's favorite color is: %s%n", favoriteColor);
++
++    }
++}
+Index: src/linkedListActivity/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/linkedListActivity/Main.java b/src/linkedListActivity/Main.java
+new file mode 100644
+--- /dev/null	(date 1730601702579)
++++ b/src/linkedListActivity/Main.java	(date 1730601702579)
+@@ -0,0 +1,33 @@
++package linkedListActivity;
++
++public class Main {
++    public static void main(String[] args) {
++
++        FlightReservation res1 = new FlightReservation("Alan White", "ABC123", "12S");
++        FlightReservation res2 = new FlightReservation("Joe Cox", "FFC102", "3D" );
++
++        res1.addReservation("Flight ABC123, Seat 12S");
++        res1.addReservation("Flight BCS040, Seat 19F");
++        res1.addReservation("Flight FEF333, Seat 9P");
++
++        res2.addReservation("Flight AKD305, Seat 23F");
++        res2.addReservation("Flight FFC102, Seat 3D");
++        res2.addReservation("Flight BLS930, Seat 26V");
++
++        System.out.println(res1.getReservationInfo());
++        res1.displayReservationHistory();
++
++        System.out.println();
++        System.out.println(res2.getReservationInfo());
++        res2.displayReservationHistory();
++
++        res1.removeReservation();
++        res2.removeReservation();
++
++        System.out.println("\nNew Reservations:");
++        res1.displayReservationHistory();
++        System.out.println();
++        res2.displayReservationHistory();
++
++    }
++}
+Index: src/weekFour/GuessingGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFour/GuessingGame.java b/src/weekFour/GuessingGame.java
+new file mode 100644
+--- /dev/null	(date 1725893999236)
++++ b/src/weekFour/GuessingGame.java	(date 1725893999236)
+@@ -0,0 +1,47 @@
++package weekFour;
++import java.util.Scanner;
++public class GuessingGame {
++    public static void main(String[] args) {
++
++        Scanner scan = new Scanner(System.in);
++        //String answer;
++        int total = 0;
++        int answer = 33;
++        boolean q = false;
++
++
++
++        while (!q) {
++            System.out.println("Enter a number between 1 and 100, or enter q to quit.");
++            String userGuess = scan.nextLine();
++
++            if (userGuess.equals("q")) {
++                System.out.println("Quitter! The answer was " + answer + ".");
++                q = true;
++                break;
++
++            } else
++            {
++                int uGuess = Integer.parseInt(userGuess);
++                if (uGuess > answer) {
++                    System.out.println("Too high. Guess again.");
++
++                } else if (uGuess < answer) {
++                    System.out.println("Too low. Guess again.");
++
++                } else if(uGuess == answer){
++                    System.out.println("Correct!");
++                    q= true;
++                    break;
++                }else {
++                    System.out.println("Please enter a valid number or 'q' to quit");
++
++                }
++            }
++            total++;
++        }
++        System.out.println("You did it! The answer was: " + answer + ". It took you " + total + " tries.");
++    }
++
++
++}
+Index: src/project3/Account.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project3/Account.java b/src/project3/Account.java
+new file mode 100644
+--- /dev/null	(date 1732677678914)
++++ b/src/project3/Account.java	(date 1732677678914)
+@@ -0,0 +1,44 @@
++package project3;
++
++import java.util.Scanner;
++
++public class Account {
++    protected double balance;
++    protected int accountNumber;
++    protected static int numberOfAccounts = 1000;
++    Scanner scan = new Scanner(System.in);
++
++    public Account(double initialDeposit){
++        this.balance = initialDeposit;
++        this.accountNumber = ++numberOfAccounts;
++    }
++
++    public void deposit(double deposit) {
++
++        balance += deposit;
++        System.out.printf("\nAmount deposited: %.2f\n", deposit, "\nUpdated balance: %.2f\n", balance);
++    }
++
++    public void withdraw(double withdraw){
++
++        if (withdraw > balance){
++            System.err.println("INSUFFICIENT FUNDS");
++            withdraw = 0;
++        } else balance -= withdraw;
++        System.out.printf("\nAmount withdrawn: %.2f\n", withdraw, "\nUpdated balance: %.2f\n", balance);
++
++    }
++
++    public double getBalance(){
++        return balance;
++    }
++
++    public int getAccountNumber(){
++        return accountNumber;
++    }
++
++    @Override
++    public String toString() {
++        return String.format("\nAccount Number: %d \nBalance: $%.2f\n", accountNumber, balance);
++    }
++}
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	(date 1724422377538)
++++ b/.idea/uiDesigner.xml	(date 1724422377538)
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/weekFour/CFTable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFour/CFTable.java b/src/weekFour/CFTable.java
+new file mode 100644
+--- /dev/null	(date 1726065760405)
++++ b/src/weekFour/CFTable.java	(date 1726065760405)
+@@ -0,0 +1,15 @@
++package weekFour;
++
++public class CFTable {
++    public static void main(String[] args) {
++
++        int startTemp = 0;
++        int endTemp = 20;
++
++        System.out.printf("%-10s %-12s%n", "Celsius", "Fahrenheit");
++        for (int c = startTemp; c <= endTemp; c++){
++            double f = (c * 9.0/5.0) + 32;
++            System.out.printf("%-10d %-12.1f%n", c, f);
++        }
++    }
++}
+Index: src/project3/Bank.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project3/Bank.java b/src/project3/Bank.java
+new file mode 100644
+--- /dev/null	(date 1732647523440)
++++ b/src/project3/Bank.java	(date 1732647523440)
+@@ -0,0 +1,32 @@
++package project3;
++
++import java.util.ArrayList;
++
++public class Bank {
++    protected ArrayList<Customer> customers;
++
++    public Bank(){
++        this.customers = new ArrayList<>();
++    }
++    public void addCustomer(Customer customer){
++        customers.add(customer);
++    }
++    public void removeCustomer(Customer customer){
++        customers.remove(customer);
++    }
++    public Customer getCustByPin(String pin){
++        for (Customer customer : customers){
++            if (customer.getPin().equals(pin)){
++                return customer;
++            }
++        }
++        return null;
++    }
++    public String allCustInfo() {
++        String custInfo = "";
++        for (Customer customer : customers) {
++            custInfo += customer.toString();
++        }
++        return custInfo;
++    }
++}
+Index: src/project3/Customer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project3/Customer.java b/src/project3/Customer.java
+new file mode 100644
+--- /dev/null	(date 1732678164282)
++++ b/src/project3/Customer.java	(date 1732678164282)
+@@ -0,0 +1,50 @@
++package project3;
++
++import java.util.ArrayList;
++
++public class Customer {
++    protected String firstName;
++    protected String lastName;
++    protected String pin;
++    protected ArrayList<Account> accounts;
++
++    public Customer(String firstName, String lastName, String pin){
++        this.firstName = firstName;
++        this.lastName = lastName;
++        this.pin = pin;
++        this.accounts = new ArrayList<>();
++    }
++    public void addAccount(Account accNumber){
++        accounts.add(accNumber);
++        System.out.printf("\nAccount " + accNumber +" added! \nTotal accounts: %d", accounts.size());
++
++    }
++    public void closeAccount(String accNumber) {
++        accounts.remove(accNumber);
++    }
++
++        public Account accByNum(int accNumber) {
++        for (Account account : accounts){
++            if(account.getAccountNumber() == accNumber){
++                return account;
++            }
++        }
++        return null;
++    }
++
++    public String getAllInfo() {
++        String info = "";
++        for (Account account : accounts){
++            info += account.toString();
++        }
++        return info;
++    }
++
++    public String getPin(){
++        return pin;
++    }
++    @Override
++    public String toString() {
++        return String.format("\nCustomer name: %s %s \nCustomer pin: %s", firstName,lastName,pin);
++    }
++}
+Index: src/project3/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project3/Menu.java b/src/project3/Menu.java
+new file mode 100644
+--- /dev/null	(date 1732678212767)
++++ b/src/project3/Menu.java	(date 1732678212767)
+@@ -0,0 +1,154 @@
++package project3;
++
++import java.util.Scanner;
++
++public class Menu {
++    private Scanner scan = new Scanner(System.in);
++    private Bank bank = new Bank();
++
++    public void run() {
++        while (true) {
++            System.out.println("\n*** MAIN MENU ***");
++            System.out.println("\nPlease make a selection:");
++            System.out.println("1. Access Account");
++            System.out.println("2. Open a New Account");
++            System.out.println("3. Close All Accounts");
++            System.out.println("4. Exit");
++
++            int choice = scan.nextInt();
++            scan.nextLine();
++
++            switch (choice) {
++                case 1:
++                    accessAccount();
++                    break;
++                case 2:
++                    openAccount();
++                    break;
++                case 3:
++                    closeAllAccounts();
++                    break;
++                case 4:
++                    System.out.println("Exiting...");
++                    return;
++                default:
++                    System.err.println("Invalid entry!");
++            }
++        }
++    }
++
++    private void accessAccount() {
++        System.out.println("Please enter your PIN:");
++        String pin = scan.nextLine();
++        Customer customer = bank.getCustByPin(pin);
++
++        if (customer == null) {
++            System.err.println("PIN is not valid.");
++            return;
++        }
++
++        System.out.println(customer.getAllInfo());
++        System.out.println("Enter your account number:");
++        int accNum = scan.nextInt();
++        scan.nextLine();
++        Account account = customer.accByNum(accNum);
++        if (account == null) {
++            System.err.println("Account number invalid.");
++            return;
++        }
++
++        while (true) {
++            System.out.println("\n\nACCOUNT MENU");
++            System.out.println("\nPlease make your selection:");
++            System.out.println("1. Deposit");
++            System.out.println("2. Withdraw");
++            System.out.println("3. See account balance");
++            System.out.println("4. Close account");
++            System.out.println("5. Exit");
++
++            int choice = scan.nextInt();
++            scan.nextLine();
++
++            if (choice == 5) {
++                return;
++            }
++
++
++            if (choice == 1) {
++                System.out.println("Enter amount:");
++                double amount = scan.nextDouble();
++                scan.nextLine();
++                account.deposit(amount);
++                System.out.println("New balance: " + account.getBalance());
++            } else if (choice == 2) {
++                System.out.println("Enter amount:");
++                double amount = scan.nextDouble();
++                scan.nextLine();
++                account.withdraw(amount);
++                System.out.println("New balance: " + account.getBalance());
++            } else if (choice == 3) {
++                System.out.println("Account balance: " + account.getBalance());
++            } else if (choice == 4){
++                System.out.println("Please enter the account number of the account you wish to close: ");
++                String accNumber = scan.nextLine();
++                customer.closeAccount(accNumber);
++                System.out.printf("Account %s removed!", accNumber);
++            } else System.err.println("Invalid entry.");
++        }
++    }
++
++    private Customer newCustomer() {
++        System.out.println("Enter your first name:");
++        String first = scan.nextLine();
++        System.out.println("Enter your last name:");
++        String last = scan.nextLine();
++        System.out.println("Enter your PIN:");
++        String pin = scan.nextLine();
++
++        Customer customer = new Customer(first, last, pin);
++        bank.addCustomer(customer);
++        return customer;
++    }
++
++    private void openAccount() {
++        System.out.println("Are you a new customer?");
++        String YN = scan.nextLine();
++        Customer customer;
++
++        if (YN.equalsIgnoreCase("yes")) {
++            customer = newCustomer();
++        } else if (YN.equalsIgnoreCase("no")){
++            System.out.println("Enter your pin:");
++            String pin = scan.nextLine();
++            customer = bank.getCustByPin(pin);
++
++            if (customer == null) {
++                System.err.println("Pin is not valid.");
++                return;
++            }
++            }else{
++                System.err.println("Invalid entry. Type 'yes' or 'no'.");
++                return;
++            }
++
++            System.out.println("Enter initial deposit amount:");
++            double depo = scan.nextDouble();
++            scan.nextLine();
++
++            Account newAccount = new Account(depo);
++            customer.addAccount(newAccount);
++            System.out.println("\nNewest account opened: " + newAccount.getAccountNumber());
++        }
++        private void closeAllAccounts(){
++            System.out.println("Enter your PIN:");
++            String pin = scan.nextLine();
++            Customer customer = bank.getCustByPin(pin);
++
++            if (customer == null) {
++                System.err.println("PIN is not valid.");
++                return;
++            }
++            bank.removeCustomer(customer);
++            System.err.println("Customer removed from bank registry!");
++        }
++    }
+Index: src/weekFour/DistanceTraveled.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFour/DistanceTraveled.java b/src/weekFour/DistanceTraveled.java
+new file mode 100644
+--- /dev/null	(date 1726065626475)
++++ b/src/weekFour/DistanceTraveled.java	(date 1726065626475)
+@@ -0,0 +1,24 @@
++package weekFour;
++
++import java.util.Scanner;
++
++public class DistanceTraveled {
++    public static void main(String[] args) {
++
++        Scanner scan = new Scanner(System.in);
++
++        int speed;
++        System.out.println("Enter the speed of the vehicle in mph:");
++        speed = scan.nextInt();
++
++        int time;
++        System.out.println("Enter the number of hours traveled:");
++        time = scan.nextInt();
++
++        System.out.println("Hour" + "       " + "Distance traveled");
++        for (int t = 1; t <= time; t++) {
++            int dist = speed * t;
++            System.out.printf("%-10d %-12d%n", t, dist);
++        }
++    }
++}
+Index: src/weekFour/TestAverage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFour/TestAverage.java b/src/weekFour/TestAverage.java
+new file mode 100644
+--- /dev/null	(date 1726843699312)
++++ b/src/weekFour/TestAverage.java	(date 1726843699312)
+@@ -0,0 +1,28 @@
++package weekFour;
++import java.util.Scanner;
++
++public class TestAverage {
++    public static void main(String[] args) {
++
++        Scanner scan = new Scanner (System.in);
++
++        System.out.println("Enter number of students: ");
++        int numStudents = scan.nextInt();
++
++        System.out.println("Enter number of tests per student: ");
++        int numTests = scan.nextInt();
++
++        for (int student = 1; student <= numStudents; student++){
++            double total = 0;
++
++            System.out.println("\nStudent number " + student + ":");
++            for (int test = 1; test <= numTests; test++) {
++                System.out.println("\nEnter score " + test + ":");
++                double score = scan.nextDouble();
++                total += score;
++            }
++            double average = total / numTests;
++        System.out.println("The average for student " + student + " is: " + average);
++        }
++    }
++}
+Index: src/weekFive/CopyArray.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFive/CopyArray.java b/src/weekFive/CopyArray.java
+new file mode 100644
+--- /dev/null	(date 1727190073923)
++++ b/src/weekFive/CopyArray.java	(date 1727190073923)
+@@ -0,0 +1,61 @@
++package weekFive;
++import java.util.Scanner;
++
++public class CopyArray {
++    public static void main(String[] args) {
++
++        Scanner scan = new Scanner(System.in);
++
++        // array 1
++
++        System.out.println("Enter number of array elements: ");
++        final int array1 = scan.nextInt();
++        int[] array = new int[array1];
++
++        for (int i = 0; i < array1; i++) {
++            System.out.print("Enter array element " + i + ": ");
++            array[i] = scan.nextInt();
++        }
++        System.out.println("\nArray 1");
++        for (int element : array) {
++            System.out.print(element + " ");
++        }
++
++        // array 2
++
++        int[] array2 = new int[array1];
++
++        for (int i = 0; i < array1; i++) {
++            array2[i] = array[i];
++        }
++        System.out.println("\nArray 1 - copy");
++        for (int element : array2) {
++            System.out.print(element + " ");
++        }
++
++        // array 3
++
++        int[] array3 = new int[array1];
++
++        for (int i = 0; i < array1; i++) {
++            array3[i] = array[i];
++        }
++        System.out.println("\nArray 3");
++        for (int element : array3) {
++
++            System.out.print((element * element) + " ");
++        }
++
++        // array 4
++
++        int[] array4 = new int[array1];
++
++        for (int i = 0; i < array1; i++) {
++            array4[i] = array[array1 - 1 - i];
++        }
++        System.out.println("\nArray 4");
++        for (int element : array4) {
++            System.out.print(element + " ");
++        }
++    }
++}
+Index: src/weekFive/ArrayFromInput.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFive/ArrayFromInput.java b/src/weekFive/ArrayFromInput.java
+new file mode 100644
+--- /dev/null	(date 1726846208313)
++++ b/src/weekFive/ArrayFromInput.java	(date 1726846208313)
+@@ -0,0 +1,29 @@
++package weekFive;
++
++import java.util.Scanner;
++
++public class ArrayFromInput {
++    public static void main(String[] args) {
++
++      Scanner scan = new Scanner(System.in);
++
++      String[] name = new String[3];
++      String[] major = new String[3];
++      int[] age = new int[3];
++
++      for (int i = 0; i < 3; i++){
++          System.out.println("Please enter your name: ");
++          name[i] = scan.nextLine();
++          System.out.println("Please enter your major: ");
++          major[i] = scan.nextLine();
++          System.out.println("Please enter your age: ");
++          age[i] = Integer.parseInt(scan.nextLine());
++          System.out.println();
++      }
++      System.out.printf("%-20s %-20s %-20s%n", "Name", "Major", "Age");
++
++      for (int i = 0; i < name.length; i++){
++          System.out.printf("%-20s %-20s %-20d%n", name[i], major[i], age[i]);
++      }
++    }
++}
+Index: src/projectOne/CharacterBattle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/projectOne/CharacterBattle.java b/src/projectOne/CharacterBattle.java
+new file mode 100644
+--- /dev/null	(date 1727749645746)
++++ b/src/projectOne/CharacterBattle.java	(date 1727749645746)
+@@ -0,0 +1,165 @@
++package projectOne;
++import java.util.Scanner;
++import java.util.Random;
++public class CharacterBattle {
++    public static void main(String[] args) {
++
++        Scanner scan = new Scanner(System.in);
++        Random random = new Random();
++
++        int rounds;
++
++        // determine rounds
++
++        System.out.println("\n--- The game begins! A roll-off will determine who chooses the length of the game. ---\n");
++
++        while (true) {
++            int p1Roll = random.nextInt(6) + 1;
++            int p2Roll = random.nextInt(6) + 1;
++
++            System.out.println("Player 1 rolled: " + p1Roll);
++            System.out.println("Player 2 rolled: " + p2Roll);
++
++            if (p1Roll > p2Roll) {
++                System.out.println("\nPlayer 1 wins the roll-off!");
++                System.out.println("Player 1, choose an ODD number of rounds:\n");
++                rounds = scan.nextInt();
++                break;
++            } else if (p1Roll < p2Roll) {
++                System.out.println("\nPlayer 2 wins the roll-off!");
++                System.out.println("Player 2, choose an ODD number of rounds:\n");
++                rounds = scan.nextInt();
++                break;
++            } else
++                System.out.println("\n--- A tie! Roll again! ---\n");
++        }
++
++
++        // battle loop
++
++        int p1Win = 0;
++        int p2Win = 0;
++
++        for (int round = 1; round <= rounds; round++) {
++
++            // player 1
++
++            System.out.println("\n--- Player 1 Character Creation ---");
++            System.out.println("Player 1, enter your character name: ");
++            String p1Name = scan.next();
++            System.out.println("Enter " + p1Name + "'s HP: ");
++            int p1HP = scan.nextInt();
++            System.out.println("Enter the name of " + p1Name + "'s ability: ");
++            String p1Ability = scan.next();
++            System.out.println("Enter " + p1Ability + "'s damage: ");
++            int p1AP = scan.nextInt();
++            System.out.println("Enter " + p1Name + "'s attack speed: ");
++            int p1Speed = scan.nextInt();
++
++            // player 2
++
++            System.out.println("\n--- Player 2 Character Creation ---");
++
++            System.out.println("Player 2, enter your character name: ");
++            String p2Name = scan.next();
++            System.out.println("Enter " + p2Name + "'s HP: ");
++            int p2HP = scan.nextInt();
++            System.out.println("Enter the name of " + p2Name + "'s ability: ");
++            String p2Ability = scan.next();
++            System.out.println("Enter " + p2Ability + "'s damage: ");
++            int p2AP = scan.nextInt();
++            System.out.println("Enter " + p2Name + "'s attack speed: ");
++            int p2Speed = scan.nextInt();
++            System.out.println("\n--- Round " + round + " ---\n");
++
++            int p1HPCUR = p1HP;
++            int p2HPCUR = p2HP;
++
++            while (p1HPCUR > 0 && p2HPCUR > 0) {
++
++                if (p1Speed > p2Speed) {
++                    System.out.println("Player 1 has higher speed, so they will attack first.");
++                    System.out.println(p1Name + " used " + p1Ability + "! It deals " + p1AP + " damage to " + p2Name + ".");
++                    p2HPCUR -= p1AP;
++
++                    if (p2HPCUR <= 0) {
++                        System.out.println("Player 1 and " + p1Name + " win the round!");
++                        p1Win++;
++                        break;
++                    }
++                    System.out.println(p2Name + " used " + p2Ability + "! It deals " + p2AP + " damage to " + p1Name + ".");
++                    p1HPCUR -= p2AP;
++
++                    if (p1HPCUR <= 0) {
++                        System.out.println("Player 2 and " + p2Name + " win the round!");
++                        p2Win++;
++                        break;
++                    }
++                } else {
++
++                    System.out.println(p2Name + " used " + p2Ability + "! It deals " + p2AP + " damage to " + p1Name + ".");
++                    p1HPCUR -= p2AP;
++
++                    if (p1HPCUR <= 0) {
++                        System.out.println("Player 2 and " + p2Name + " win the round!");
++                        p2Win++;
++                        break;
++                    }
++                    System.out.println(p1Name + " used " + p1Ability + "! It deals " + p1AP + " damage to " + p2Name + ".");
++                    p2HPCUR -= p1AP;
++
++                    if (p2HPCUR <= 0) {
++                        System.out.println("Player 1 and " + p1Name + " win the round!");
++                        p1Win++;
++                        break;
++                    }
++                }
++
++                if (p1Speed == p2Speed) {
++                    System.out.println("The attack speed is the same for both " + p1Name + " and " + p2Name + ".");
++                    System.out.println("A coin toss will determine who attacks first. Player 1 is heads, Player 2 is tails.");
++                    int flip = random.nextInt(2);
++                    if (flip == 0) {
++                        System.out.println("The coin shows heads. Player 1 wins the coin flip!");
++                        p2HPCUR -= p1AP;
++                        System.out.println(p1Name + " used " + p1Ability + "! It deals " + p1AP + " damage to " + p2Name + ".");
++                        if (p2HPCUR <= 0) {
++                            System.out.println("Player 1 and " + p1Name + " win the round!");
++                            p1Win++;
++                            break;
++                        } else
++                            System.out.println("The coin shows tails. Player 2 wins the coin flip!");
++                        p1HPCUR -= p2AP;
++                        System.out.println(p2Name + " used " + p2Ability + "! It deals " + p2AP + " damage to " + p1Name + ".");
++                        if (p1HPCUR <= 0) {
++                            System.out.println("Player 2 and " + p2Name + " win the round!");
++                            p2Win++;
++                            break;
++                        }
++                    }
++
++                }
++                //HP check
++                System.out.println(p1Name + "'s HP: " + p1HPCUR);
++                System.out.println(p2Name + "'s HP: " + p2HPCUR);
++            }
++        }
++        System.out.println("\n--- Score ---\n");
++        System.out.println("Player 1 wins: " + p1Win);
++        System.out.println("Player 2 wins: " + p2Win);
++
++        System.out.println("\n--- Winner! ---\n");
++        if (p1Win > p2Win) {
++            System.out.println("Player 1 wins! Points: " + p1Win);
++        } else {
++            System.out.println("Player 2 wins! Points: " + p2Win);
++
++        }
++    }
++}
++
++
++
++
++
++
+Index: src/weekFourteen/DataStructure.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFourteen/DataStructure.java b/src/weekFourteen/DataStructure.java
+new file mode 100644
+--- /dev/null	(date 1732118590978)
++++ b/src/weekFourteen/DataStructure.java	(date 1732118590978)
+@@ -0,0 +1,117 @@
++
++/* 1. What is the purpose of generics in Java?
++Generics allow for a class or method to be customized to whatever type the programmer is using.
++
++    2. How can generics be used in Java programming?
++Generic methods can be used to simplify your code. Instead of overloading methods, you could write a generic method that handles multiple different types.
++
++    3. What are the pros and cons of using generics?
++Generics allow for your code to be more concise and efficient. However, generics have limited support for primitive types (boxing, unboxing). */
++
++package weekFourteen;
++
++import java.util.*;
++public class DataStructure <T> {
++    // array generalized to T
++    final private int SIZES = 3;
++    private ArrayList<T> studentList = new ArrayList<>();
++    private T[] ageList = (T[]) new Object[SIZES];
++
++
++    private HashMap<T, T> majorGpaMap = new HashMap<>();
++    private LinkedList<T> nationalityList = new LinkedList<>();
++    private Stack<T> hometownStack = new Stack<>();
++    private Queue<T> homeStateQueue = new LinkedList<>();
++
++    // student
++
++    public void addStudent(T name) {
++        studentList.add(name);
++    }
++    public void removeStudent(T name) {
++        if (studentList.contains(name)) {
++            studentList.remove(name);
++        } else System.err.println("Error! The student name you entered does not exist.");
++    }
++    public void printStudent() {
++        System.out.println("\nStudents:");
++        for (int i = 0; i < studentList.size(); i++) ;
++        System.out.println(studentList);
++    }
++
++    // age
++    int ageIndex = 0;
++
++    public void addAge(T age) {
++        if (ageIndex < ageList.length) {
++            ageList[ageIndex++] = age;
++        }
++    }
++    public void removeAge() {
++        if (ageIndex > 0) {
++            ageList[--ageIndex] = null;
++        }
++    }
++    public void printAge() {
++        System.out.println("\nAges: ");
++        for (Object age : ageList){
++            System.out.println(age);
++        }
++        System.out.println();
++    }
++
++    // GPA
++
++    public void addGPA(T name, T GPA) {
++        majorGpaMap.put(name, GPA);
++    }
++    public void removeGPA(T GPAName) {
++        if (majorGpaMap.containsKey(GPAName)){
++            majorGpaMap.remove(GPAName);
++        }
++    }
++    public void printGPA() {
++        System.out.println("\nGPAs:");
++        System.out.println(majorGpaMap);
++    }
++
++    // nationality
++
++    public void addNationality(T nationality) {
++        nationalityList.add(nationality);
++    }
++    public void removeNationality(T nationality) {
++        if (nationalityList.contains(nationality)) {
++            nationalityList.remove(nationality);
++        } else System.err.println("Error! The nationality you entered does not exist.");
++    }
++    public void printNationality(){
++        System.out.println("\nNationalities:");
++        System.out.println(nationalityList);
++    }
++
++    // homestack
++    public void pushStack(T hometown){
++        hometownStack.push(hometown);
++    }
++    public void popStack(){
++        hometownStack.pop();
++    }
++    public void printStack(){
++        System.out.println("\nHometown Stacks:");
++        System.out.println(hometownStack);
++    }
++
++    // homequeue
++
++    public void addQueue(T townhome){
++        homeStateQueue.offer(townhome);
++    }
++    public void removeQueue(){
++        homeStateQueue.remove();
++    }
++    public void printQueue(){
++        System.out.println("\nHometown Queues:");
++        System.out.println(homeStateQueue);
++    }
++}
+Index: src/weekFive/TwoDimensionalArrays.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFive/TwoDimensionalArrays.java b/src/weekFive/TwoDimensionalArrays.java
+new file mode 100644
+--- /dev/null	(date 1727102609914)
++++ b/src/weekFive/TwoDimensionalArrays.java	(date 1727102609914)
+@@ -0,0 +1,62 @@
++package weekFive;
++
++public class TwoDimensionalArrays {
++    public static void main(String[] args) {
++
++        //array 1
++        int [][] array1 = {
++                {1, 2, 3},
++                {4, 5, 6},
++                {7, 8, 9},
++                {10, 11, 12}
++        };
++
++        System.out.println("\nArray 1\n");
++
++        for(int i = 0; i < array1.length; i++){
++            for(int j = 0; j < array1[i].length; j++) {
++                System.out.print(array1[i][j] + " ");
++            }
++            System.out.println();
++        }
++
++        // array 2
++        double [][] array2 = new double [4][3];
++                array2[0][0] = 1.1;
++                array2[0][1] = 2.2;
++                array2[0][2] = 3.3;
++                array2[1][0] = 4.4;
++                array2[1][1] = 5.5;
++                array2[1][2] = 6.6;
++                array2[2][0] = 7.7;
++                array2[2][1] = 8.8;
++                array2[2][2] = 9.9;
++                array2[3][0] = 10.0;
++                array2[3][1] = 11.1;
++                array2[3][2] = 12.2;
++
++        System.out.println("\nArray 2\n");
++
++        for(double[] outerArray : array2) {
++            for (double element : outerArray) {
++                System.out.print(element + " ");
++            }
++            System.out.println();
++        }
++
++        //array 3
++        String [][] array3 = {
++                {"Ann","Andy","Andrea"},
++                {"John","Joan","Joanna"}
++        };
++
++        System.out.println("\nArray 3\n");
++
++        for(int i = 0; i < array3.length; i++){
++            for(int j = 0; j < array3[i].length; j++) {
++                System.out.print(array3[i][j] + " ");
++            }
++            System.out.println();
++        }
++    }
++}
+Index: src/weekSix/MovieSimulationOne.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekSix/MovieSimulationOne.java b/src/weekSix/MovieSimulationOne.java
+new file mode 100644
+--- /dev/null	(date 1727277755586)
++++ b/src/weekSix/MovieSimulationOne.java	(date 1727277755586)
+@@ -0,0 +1,40 @@
++package weekSix;
++import java.util.Scanner;
++
++public class MovieSimulationOne {
++    public static void main(String[] args) {
++        Scanner scan = new Scanner(System.in);
++
++        System.out.println("How many movies are there?\n");
++        int NUM_ELEMENTS = scan.nextInt();
++        scan.nextLine();
++
++        String[] movieNames = new String[NUM_ELEMENTS];
++        String[] movieTypes = new String[NUM_ELEMENTS];
++        int[] movieAvail = new int[NUM_ELEMENTS];
++        double[] moviePrices = new double[NUM_ELEMENTS];
++
++        for (int i = 0; i < NUM_ELEMENTS; i++) {
++            System.out.println("Enter the name of the movie:");
++            movieNames[i] = scan.nextLine();
++            System.out.println("Is the movie 2D or 3D?");
++            movieTypes[i] = scan.nextLine();
++            System.out.println("How many seats are available?");
++            movieAvail[i] = scan.nextInt();
++            scan.nextLine();
++            System.out.println("How much is a ticket?");
++            moviePrices[i] = scan.nextDouble();
++            scan.nextLine();
++        }
++
++        movieDetails(movieNames, movieTypes, movieAvail, moviePrices, NUM_ELEMENTS);
++    }
++
++    public static void movieDetails(String[] movieNames, String[] movieTypes, int[] movieAvail, double[] moviePrices, int NUM_ELEMENTS) {
++        System.out.println("\n----- Movie Details -----\n");
++        System.out.printf("%-20s %-20s %-25s %-20s%n\n", "Movie Name", "Movie Type", "Movie Availability", "Movie Price");
++        for (int i = 0; i < NUM_ELEMENTS; i++) {
++            System.out.printf("%-20s %-20s %-25d %-20f%n", movieNames[i], movieTypes[i], movieAvail[i], moviePrices[i]);
++        }
++    }
++}
+Index: src/weekFourteen/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekFourteen/Main.java b/src/weekFourteen/Main.java
+new file mode 100644
+--- /dev/null	(date 1731944289902)
++++ b/src/weekFourteen/Main.java	(date 1731944289902)
+@@ -0,0 +1,63 @@
++package weekFourteen;
++
++public class Main {
++    public static void main(String[] args) {
++        weekFourteen.DataStructure generic = new DataStructure();
++
++        //add
++
++        //student
++        generic.addStudent("John");
++        generic.addStudent("Caitlyn");
++        generic.addStudent("Pete");
++        //age
++        generic.addAge(30);
++        generic.addAge(33);
++        generic.addAge(94);
++        //GPA
++        generic.addGPA("Joe",3.32);
++        generic.addGPA("Paul",2.63);
++        generic.addGPA("Francis",1.44);
++        //nationality
++        generic.addNationality("White");
++        generic.addNationality("Black");
++        generic.addNationality("Latina");
++        //pushStack
++        generic.pushStack("Richmond");
++        generic.pushStack("Lynn");
++        generic.pushStack("Fishers");
++        //addQueue
++        generic.addQueue("Indianapolis");
++        generic.addQueue("Winchester");
++        generic.addQueue("Williamsburg");
++
++        //display
++
++        System.out.println("\n*** Information ***");
++        generic.printStudent();
++        generic.printAge();
++        generic.printGPA();
++        generic.printNationality();
++        generic.printStack();
++        generic.printQueue();
++
++        //remove
++
++        generic.removeStudent("John");
++        generic.removeAge();
++        generic.removeGPA("Joe");
++        generic.removeNationality("White");
++        generic.popStack();
++        generic.removeQueue();
++
++        //updated display
++
++        System.out.println("\n*** Updated Information ***");
++        generic.printStudent();
++        generic.printAge();
++        generic.printGPA();
++        generic.printNationality();
++        generic.printStack();
++        generic.printQueue();
++    }
++}
+Index: src/weekSix/labSix/Rectangle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekSix/labSix/Rectangle.java b/src/weekSix/labSix/Rectangle.java
+new file mode 100644
+--- /dev/null	(date 1727358559633)
++++ b/src/weekSix/labSix/Rectangle.java	(date 1727358559633)
+@@ -0,0 +1,37 @@
++package weekSix.labSix;
++
++import java.util.Scanner;
++
++public class Rectangle {
++    static Scanner scan = new Scanner(System.in);
++
++    public static void main(String[] args) {
++        double length, width, area;
++
++        length = getLength();
++        width = getWidth();
++        area = getArea(length, width);
++        displayData(length, width, area);
++
++        scan.close();
++    }
++    public static double getLength() {
++        System.out.print("Please enter the rectangle's length: ");
++        double length = scan.nextDouble();
++        return length;
++    }
++    public static double getWidth() {
++        System.out.print("Please enter the rectangle's width: ");
++        double width = scan.nextDouble();
++        return width;
++    }
++    public static double getArea(double width, double length) {
++        double area = length * width;
++        return area;
++    }
++    public static void displayData(double length, double width, double area) {
++        System.out.println("Rectangle length: " + length + "\n" +
++                "Rectangle width: " + width + "\n" +
++                "Rectangle area: " + area + "\n");
++    }
++}
+Index: TestingFileWrite.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TestingFileWrite.txt b/TestingFileWrite.txt
+new file mode 100644
+--- /dev/null	(date 1730908178900)
++++ b/TestingFileWrite.txt	(date 1730908178900)
+@@ -0,0 +1,4 @@
++<User Name>          <Password>           <Score>           <Player Character>   <Winning Percentage>
++ emma                 sdfkjdsf             300    joe                     23.32
++ joe                  fsdfsdfdf            321    eeejee                  23.67
++ emma                 fsdofhasdf              233                     Joe           32.68
+\ No newline at end of file
+Index: src/weekSix/MovieSimulationTwo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekSix/MovieSimulationTwo.java b/src/weekSix/MovieSimulationTwo.java
+new file mode 100644
+--- /dev/null	(date 1727451371710)
++++ b/src/weekSix/MovieSimulationTwo.java	(date 1727451371710)
+@@ -0,0 +1,67 @@
++package weekSix;
++
++import java.util.Random;
++
++public class MovieSimulationTwo {
++
++    // Constants for the seat availability 2D array
++    private static final int ROWS = 5;
++    private static final int COLUMNS = 10;
++
++    public static void main(String[] args) {
++        String[] movieNames = {"Star Wars", "21 Jump Street", "Sing", "Ponyo"};
++        String[] movieTypes = {"Sci-Fi", "Comedy", "Family", "Family"};
++        double[] moviePrices = {10.00, 12.43, 15.32, 13.23};
++
++        displayMovieDetails(movieNames, movieTypes, moviePrices);
++
++        int[][] movieAvailability = new int[ROWS][COLUMNS];
++
++        setSeatAvailability(movieAvailability);
++
++        System.out.println("Initial Seat Availability (0 = available, 1 = occupied):");
++        displaySeatAvailability(movieAvailability);
++
++        randomizeAvailability(movieAvailability);
++
++        System.out.println("Randomized Seat Availability (0 = available, 1 = occupied):");
++        displaySeatAvailability(movieAvailability);
++    }
++
++    public static void setSeatAvailability(int[][] seats) {
++        for (int i = 0; i < ROWS; i++) {
++            for (int j = 0; j < COLUMNS; j++) {
++                seats[i][j] = 0;
++            }
++        }
++    }
++
++    public static void randomizeAvailability(int[][] seats) {
++        Random rand = new Random();
++        for (int i = 0; i < ROWS; i++) {
++            for (int j = 0; j < COLUMNS; j++) {
++                seats[i][j] = rand.nextInt(2);
++            }
++        }
++    }
++
++    public static void displayMovieDetails(String[] names, String[] types, double[] prices) {
++        System.out.println("Movie Details:");
++        System.out.println("Name\t\tType\t\tPrice");
++        System.out.println("-------------------------------------");
++        for (int i = 0; i < names.length; i++) {
++            System.out.printf("%-15s%-10s$%.2f%n", names[i], types[i], prices[i]);
++        }
++        System.out.println();
++    }
++
++    public static void displaySeatAvailability(int[][] seats) {
++        for (int i = 0; i < ROWS; i++) {
++            for (int j = 0; j < COLUMNS; j++) {
++                System.out.print(seats[i][j] + " ");
++            }
++            System.out.println();
++        }
++        System.out.println();
++    }
++}
+\ No newline at end of file
+Index: src/weekTwelve/fileIO/FileWrite.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/fileIO/FileWrite.java b/src/weekTwelve/fileIO/FileWrite.java
+new file mode 100644
+--- /dev/null	(date 1730990695074)
++++ b/src/weekTwelve/fileIO/FileWrite.java	(date 1730990695074)
+@@ -0,0 +1,47 @@
++package weekTwelve.fileIO;
++
++import javax.swing.*;
++import java.io.File;
++import java.io.FileNotFoundException;
++import java.io.PrintWriter;
++import java.util.Scanner;
++
++public class FileWrite {
++    public static void main(String[] args) throws FileNotFoundException {
++        // creating an instance
++        File outputFile = new File("TestingFileWrite.txt");
++        PrintWriter output = new PrintWriter(outputFile);
++        Scanner scan = new Scanner(System.in);
++
++        // header
++        // %s --> String
++        output.printf("%-20s %-20s %-17s %-20s %-20s","<User Name>", "<Password>", "<Score>", "<Player Character>", "<Winning Percentage>");
++
++
++        // declare variables
++        String name, password, playerCharacter;
++        int score;
++        double winningPercentage;
++
++        // prompt the user
++        for(int i = 0; i < 2; i++){
++            //string
++
++            name = JOptionPane.showInputDialog(String.format("Enter user %d's user name:", (i + 1)));
++            password = JOptionPane.showInputDialog(String.format("Enter user %d's password:", (i + 1)));
++            playerCharacter = JOptionPane.showInputDialog(String.format("Enter user %d's character:", (i + 1)));
++
++            // integer
++            score = Integer.parseInt(JOptionPane.showInputDialog(String.format("Enter user %d's score:", (i + 1))));
++
++            // double
++            winningPercentage = Double.parseDouble(JOptionPane.showInputDialog(String.format("Enter user %d's winning percentage:", (i + 1))));
++
++            // write to file
++            output.printf("%n %-20s %-20s %6d %23s %15.2f", name, password, score, playerCharacter, winningPercentage);
++        }
++        scan.close();
++        output.close(); // close the PrintWriter
++    }
++
++}
+Index: src/weekTwelve/fileIO/FileAppend.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/fileIO/FileAppend.java b/src/weekTwelve/fileIO/FileAppend.java
+new file mode 100644
+--- /dev/null	(date 1730990695119)
++++ b/src/weekTwelve/fileIO/FileAppend.java	(date 1730990695119)
+@@ -0,0 +1,35 @@
++package weekTwelve.fileIO;
++
++import javax.swing.*;
++import java.io.FileNotFoundException;
++import java.io.FileWriter;
++import java.io.IOException;
++import java.io.PrintWriter;
++
++public class FileAppend {
++    public static void main(String[] args) throws IOException {
++        // syntax: try{}catch(){}
++        try{
++            // create instances
++            FileWriter fileWriter = new FileWriter("TestingFileWrite.txt",true);
++            PrintWriter output = new PrintWriter(fileWriter);
++
++            // declare variables
++            String name = JOptionPane.showInputDialog("Enter the user's name:");
++            String password = JOptionPane.showInputDialog("Enter the user's password:");
++            String playerCharacter = JOptionPane.showInputDialog("Enter the user's character:");
++            int score = Integer.parseInt(JOptionPane.showInputDialog("Enter the user's score:"));
++            double winningPercentage = Double.parseDouble(JOptionPane.showInputDialog("Enter the user's winning percentage:"));
++
++            // write to the file
++            output.printf("%n %-20s %-20s %6d %23s %15.2f", name, password, score, playerCharacter, winningPercentage);
++
++            // close
++            fileWriter.close();
++            output.close();
++
++        }catch(FileNotFoundException e){
++            System.err.println("Your file wasn't found. L");
++        }
++    }
++}
+Index: src/weekTwelve/fileIO/FileRead.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/fileIO/FileRead.java b/src/weekTwelve/fileIO/FileRead.java
+new file mode 100644
+--- /dev/null	(date 1730990695127)
++++ b/src/weekTwelve/fileIO/FileRead.java	(date 1730990695127)
+@@ -0,0 +1,33 @@
++package weekTwelve.fileIO;
++
++import java.io.File;
++import java.io.FileNotFoundException;
++import java.util.Scanner;
++
++public class FileRead {
++    public static void main(String[] args) throws FileNotFoundException {
++        // create a file instance
++        File fileOutput = new File("TestingFileWrite.txt");
++        // syntax:
++        // try{}catch(){}
++        try {
++            // create a scanner object
++            Scanner console = new Scanner(fileOutput);
++            String header = console.nextLine();
++            System.out.printf("%s", header); // displays header
++            while (console.hasNextLine()) {
++                String name = console.next();
++                String password = console.next();
++                String playerCharacter = console.next();
++                int score = Integer.parseInt(console.next());
++                double winningPercentage = Double.parseDouble(console.next());
++
++                System.out.printf("%n %-20s %-20s %6d %23s %15.2f", name, password, score, playerCharacter, winningPercentage);
++            }
++            console.close();
++        } catch (FileNotFoundException e) {
++            e.printStackTrace();
++        }
++
++    }
++}
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+--- /dev/null	(date 1730908148609)
++++ b/.idea/inspectionProfiles/Project_Default.xml	(date 1730908148609)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="ThrowablePrintStackTrace" enabled="false" level="WARNING" enabled_by_default="false" />
++  </profile>
++</component>
+\ No newline at end of file
+Index: src/bigOActivity/BigOTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/bigOActivity/BigOTest.java b/src/bigOActivity/BigOTest.java
+new file mode 100644
+--- /dev/null	(date 1732199720030)
++++ b/src/bigOActivity/BigOTest.java	(date 1732199720030)
+@@ -0,0 +1,11 @@
++package bigOActivity;
++
++public class BigOTest {
++    public static void main(String[] args) {
++
++        BigO x = new BigO();
++        x.printOnce(4);
++        x.printNTimes(4);
++        x.printNSquaredTimes(3);
++    }
++}
+Index: src/bigOActivity/BigO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/bigOActivity/BigO.java b/src/bigOActivity/BigO.java
+new file mode 100644
+--- /dev/null	(date 1732199838171)
++++ b/src/bigOActivity/BigO.java	(date 1732199838171)
+@@ -0,0 +1,31 @@
++package bigOActivity;
++
++public class BigO {
++
++    //0(1) - constant time, doesn't change based off of increasing input
++    public static void printOnce(int n){
++        System.out.println(n);
++    }
++
++    //0(n) - linear time, execution time grows linearly with the input size
++    public static void printNTimes(int n){
++        int count = 0;
++        for(int i = 1; i <= n; i++){
++            System.out.println("#" + (count + 1) + " Internet Historian");
++            count++;
++        }
++        System.out.println();
++    }
++
++    //0(n^2) - quadratic time, execution time grows quadratically with the input size
++    public static void printNSquaredTimes(int n){
++        int count = 0;
++        for(int i = 1; i <= n; i++){
++
++            for(int j = 1; j <= n; j++){
++                System.out.println("#" + (count + 1) + ": " + "The nested for loop count " + "i: " + i + "\tThe magicians " + "j: " + j + "\n");
++            }
++        }
++    }
++
++}
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1727749719762)
++++ b/.idea/.name	(date 1727749719762)
+@@ -0,0 +1,1 @@
++projectOne.zip
+\ No newline at end of file
+Index: src/weekTwelve/labEleven/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/Menu.java b/src/weekTwelve/labEleven/Menu.java
+new file mode 100644
+--- /dev/null	(date 1731437648097)
++++ b/src/weekTwelve/labEleven/Menu.java	(date 1731437648097)
+@@ -0,0 +1,181 @@
++package weekTwelve.labEleven;
++
++import java.io.FileNotFoundException;
++import java.util.Scanner;
++import java.util.ArrayList;
++
++public class Menu {
++
++    private Pokedex pokedex;
++
++    Scanner scan = new Scanner(System.in);
++
++    public Menu() {
++        this.pokedex = new Pokedex();
++    }
++
++    public void displayMenu() {
++
++        while (true) {
++            System.out.println("\n***** MENU *****");
++            System.out.println("Please make a selection:" +
++                    "\n1) Add a Pokemon" +
++                    "\n2) Remove a Pokemon" +
++                    "\n3) Display Pokemon info" +
++                    "\n4) Display all Pokemon info" +
++                    "\n5) Exit");
++            int userInput = scan.nextInt();
++
++            if (userInput == 1) {
++                createPokemon();
++            } else if (userInput == 2) {
++                deletePokemon();
++            } else if (userInput == 3) {
++                displayPokemon();
++            } else if (userInput == 4) {
++                displayAllPokemon();
++            } else if (userInput == 5) {
++                System.out.println("Exiting...");
++                break;
++            } else {
++                System.out.println("Invalid entry. Please select a valid option.");
++            }
++        }
++    }
++
++    private void createPokemon() {
++        // 1 is manual, 2 is file reading
++        System.out.println("Would you like to 1: enter Pokemon details manually? \n2: select from file?");
++        int choice = scan.nextInt();
++        if (choice == 1) {
++            System.out.println("Please enter your Pokemon's name: ");
++            String name = scan.next();
++
++            System.out.printf("Please enter %s's HP: ", name);
++            int pokeHP = scan.nextInt();
++
++            Pokemon pokemon = new Pokemon(name, pokeHP);
++            addMovesToPokemon(pokemon);
++            pokedex.addPokemon(pokemon);
++            System.out.printf("%s added to Pokedex!\n\n", name);
++
++        } else if (choice == 2) {
++            FileRead fileReader = new FileRead();
++            ArrayList<String[]> pokemonData;
++            try {
++                pokemonData = fileReader.readPokemonData("C:\\Users\\emmab\\IdeaProjects\\ec ca 0\\src\\weekTwelve\\labEleven\\CharacterStatsFile (1).txt");
++                if (pokemonData.isEmpty()) {
++                    System.out.println("No Pokemon data available in file.");
++                    return;
++                }
++                for (int i = 0; i < pokemonData.size(); i++) {
++                    System.out.printf("%d : %s", (i + 1), pokemonData.get(i)[0]);
++                }
++                int selectedIndex = scan.nextInt() - 1;
++                if (selectedIndex >= 0 && selectedIndex < pokemonData.size()) {
++                    String[] selectedPokemonData = pokemonData.get(selectedIndex);
++                    String name = selectedPokemonData[0];
++                    int pokeHP = Integer.parseInt(selectedPokemonData[1]);
++                    String moveName = selectedPokemonData[2];
++                    int movePower = Integer.parseInt(selectedPokemonData[3]);
++                    int moveSpeed = Integer.parseInt(selectedPokemonData[4]);
++                    Pokemon pokemon = new Pokemon(name, pokeHP);
++                    Move move = new Move(moveName, movePower, moveSpeed);
++                    pokemon.addMove(move);
++
++                    pokedex.addPokemon(pokemon);
++                    System.out.println("The pokemon has been added to the Pokedex from the file data.");
++                } else {
++                    System.err.println("Invalid selection!");
++                }
++            } catch (FileNotFoundException e) {
++                System.err.println("ERROR: Pokemon data file not found!");
++            }
++        } else {
++            System.err.println("Invalid input! Please select 1 or 2.");
++        }
++    }
++
++    private void deletePokemon() {
++
++        System.out.println("Enter the name of the Pokemon you wish to delete.");
++
++        String name = scan.next();
++
++        Pokemon deletePoke = pokedex.getPokemon(name);
++        if (deletePoke != null) {
++            pokedex.removePokemon(deletePoke);
++            System.out.printf("\n%s has been removed from the Pokedex!\n\n", name);
++        } else {
++            System.out.println("Pokemon not found!");
++        }
++    }
++
++    private void displayPokemon() {
++        System.out.println("Enter the name of the Pokemon you wish to display: ");
++        String name = scan.next();
++        Pokemon pokemon = pokedex.getPokemon(name);
++        if (pokemon == null) {
++            System.out.println("Pokemon not found!");
++        } else {
++            System.out.println(pokemon);
++        }
++    }
++
++    private void displayAllPokemon() {
++        ArrayList<Pokemon> pokemonArrayList = pokedex.getAllPokemon();
++        if (pokemonArrayList.isEmpty()) {
++            System.out.println("No Pokemon in the Pokedex!");
++            return;
++        }
++        System.out.println("All Pokemon in the Pokedex");
++        for (Pokemon pokemon : pokemonArrayList) {
++            System.out.printf("Name: %s", pokemon.getName());
++            System.out.printf("HP: %d", pokemon.getHp());
++            ArrayList<Move> movesArrayList = pokemon.getMoveArrayList();
++            if (movesArrayList.isEmpty()) {
++                System.out.println("No moves available for this Pokemon.");
++            } else {
++                System.out.println("Moves:");
++                for (Move move : movesArrayList) {
++
++                    System.out.printf("\t\t Move Name: %s", move.getMoveName());
++                    System.out.printf("\t\t Move Power: %d", move.getMovePower());
++                    System.out.printf("\t\t Move Speed: %d", move.getMoveSpeed());
++                }
++            }
++            System.out.println();
++        }
++
++
++
++
++
++
++        System.out.println("\n***** Pokedex *****");
++        for (Pokemon pokemon : pokedex.getAllPokemon()) {
++            System.out.println();
++            System.out.println(pokemon);
++        }
++    }
++    private void addMovesToPokemon(Pokemon pokemon){
++        while (true) {
++            System.out.println("Please enter the name of a move, or 'q' if finished.");
++            String moveName = scan.next();
++
++            if (moveName.equalsIgnoreCase("q")) {
++                break;
++
++            } else {
++                System.out.printf("Please enter %s's power: ", moveName);
++                int power = scan.nextInt();
++
++                System.out.printf("Please enter %s's speed: ", moveName);
++                int speed = scan.nextInt();
++
++                Move move = new Move(moveName, power, speed);
++                pokemon.addMove(move);
++            }
++        }
++    }
++}
+Index: .idea/material_theme_project_new.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/material_theme_project_new.xml b/.idea/material_theme_project_new.xml
+new file mode 100644
+--- /dev/null	(date 1732287744418)
++++ b/.idea/material_theme_project_new.xml	(date 1732287744418)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MaterialThemeProjectNewConfig">
++    <option name="metadata">
++      <MTProjectMetadataState>
++        <option name="migrated" value="true" />
++        <option name="pristineConfig" value="false" />
++        <option name="userId" value="37c62c69:1934f14e8ff:-7ffe" />
++      </MTProjectMetadataState>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/project3/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project3/Main.java b/src/project3/Main.java
+new file mode 100644
+--- /dev/null	(date 1732646834431)
++++ b/src/project3/Main.java	(date 1732646834431)
+@@ -0,0 +1,8 @@
++package project3;
++
++public class Main {
++    public static void main(String[] args) {
++        Menu menu = new Menu();
++        menu.run();
++    }
++}
+Index: src/project4/SelectionSort.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project4/SelectionSort.java b/src/project4/SelectionSort.java
+new file mode 100644
+--- /dev/null	(date 1733256584841)
++++ b/src/project4/SelectionSort.java	(date 1733256584841)
+@@ -0,0 +1,19 @@
++package project4;
++
++public class SelectionSort {
++    public int[] selectionSort(int[] array) {
++        int n = array.length;
++        for (int i = 0; i < n - 1; i++) {
++            int minimumIndex = i;
++            for (int j = i + 1; j < n; j++) {
++                if (array[j] < array[minimumIndex]) {
++                    minimumIndex = j;
++                }
++            }
++            int temp = array[minimumIndex];
++            array[minimumIndex] = array[i];
++            array[i] = temp;
++        }
++        return array;
++    }
++}
+Index: act35.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/act35.java b/act35.java
+new file mode 100644
+--- /dev/null	(date 1733325099006)
++++ b/act35.java	(date 1733325099006)
+@@ -0,0 +1,2 @@
++public class act35 {
++}
+Index: src/project4/main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project4/main.java b/src/project4/main.java
+new file mode 100644
+--- /dev/null	(date 1733256703004)
++++ b/src/project4/main.java	(date 1733256703004)
+@@ -0,0 +1,12 @@
++package project4;
++
++
++import java.util.Arrays;
++public class main {
++    public static void main(String[] args) {
++        SelectionSort sort = new SelectionSort();
++        int[] array = {30, 21, 44, 59, 29};
++        int[] sorted = sort.selectionSort(array);
++        System.out.println(Arrays.toString(sorted));
++    }
++}
+Index: src/project4/SelectionSortPracticeKey.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project4/SelectionSortPracticeKey.java b/src/project4/SelectionSortPracticeKey.java
+new file mode 100644
+--- /dev/null	(date 1733327843670)
++++ b/src/project4/SelectionSortPracticeKey.java	(date 1733327843670)
+@@ -0,0 +1,35 @@
++package project4;
++
++import java.util.Arrays;
++public class SelectionSortPracticeKey {
++
++    // step 1
++    public int[] SelectionSortPractice(int[] array) {
++        // array size variable
++        int n = array.length;
++        // step 1 - for loop (HINT: include n and minimum variable inside the for loop)
++        for (int i = 0; i < n; i++) {
++            // minimum variable
++            int minimum = i;
++            // step 2 - nested for loop for finding the actual smallest element in the unsorted tail (HINT: include minimum variable inside the for loop)
++            for (int j = i + 1; j < n; j++) {
++                // if statement
++                if (array[j] < array[minimum]) {
++                    minimum = j;
++                }
++            }
++            // variable for temporary swap position
++            int temp = array[minimum];
++            array[minimum] = array[i];
++            array[i] = temp;
++        }
++        return array;
++    }
++
++    public void main(String[] args) {
++        SelectionSortPractice sort = new SelectionSortPractice();
++        int[] array = {30, 11, 42, 56, 32};
++        int[] sortedArray = sort.SelectionSortPractice(array);
++        System.out.println(Arrays.toString(sortedArray));
++    }
++}
+Index: src/project4/SelectionSortPractice.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/project4/SelectionSortPractice.java b/src/project4/SelectionSortPractice.java
+new file mode 100644
+--- /dev/null	(date 1733327291118)
++++ b/src/project4/SelectionSortPractice.java	(date 1733327291118)
+@@ -0,0 +1,31 @@
++package project4;
++
++import java.util.Arrays;
++
++public class SelectionSortPractice {
++
++    // step 1
++    public int[] SelectionSortPractice(int[] array){
++        // array size variable
++        int n = array.length;
++        // step 1 - for loop (HINT: include n and minimum variable inside the for loop)
++        // int minimum = i
++
++        // step 2 - nested for loop for finding the actual smallest element in the unsorted tail (HINT: include minimum variable inside the for loop)
++        // if statement
++        // minimum = j
++
++        // variable for temporary swap position
++        int temp = array[minimum];
++        array[minimum] = array[i];
++        array[i] = temp;
++        return array;
++    }
++
++    public void main(String[] args) {
++        SelectionSortPractice sort = new SelectionSortPractice();
++        int[] array = {30, 11, 42, 56, 32};
++        // create a sorted array
++        System.out.println(Arrays.toString(/*sorted array*/));
++    }
++}
+Index: src/weekTwelve/labEleven/Pokedex.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/Pokedex.java b/src/weekTwelve/labEleven/Pokedex.java
+new file mode 100644
+--- /dev/null	(date 1730990695100)
++++ b/src/weekTwelve/labEleven/Pokedex.java	(date 1730990695100)
+@@ -0,0 +1,33 @@
++package weekTwelve.labEleven;
++
++import java.util.ArrayList;
++
++public class Pokedex {
++
++    private ArrayList<Pokemon> pokemonArrayList = new ArrayList<>();
++
++    // default constructor: public Pokedex() {} --don't need to write
++
++    public void addPokemon(Pokemon pokemon) {
++        pokemonArrayList.add(pokemon);
++    }
++
++    public void removePokemon(Pokemon pokemon) {
++        pokemonArrayList.remove(pokemon);
++    }
++
++    public ArrayList<Pokemon> getAllPokemon() {
++        return pokemonArrayList;
++    }
++
++    public Pokemon getPokemon(String pokemonName) {
++        Pokemon foundPokemon = null;
++        for (Pokemon pokemon : pokemonArrayList) {
++            if (pokemon.getName().equals(pokemonName)) {
++                foundPokemon = pokemon;
++                break;
++            }
++        }
++        return foundPokemon;
++    }
++}
+\ No newline at end of file
+Index: src/weekTwelve/labEleven/Move.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/Move.java b/src/weekTwelve/labEleven/Move.java
+new file mode 100644
+--- /dev/null	(date 1730990695137)
++++ b/src/weekTwelve/labEleven/Move.java	(date 1730990695137)
+@@ -0,0 +1,37 @@
++package weekTwelve.labEleven;
++
++public class Move {
++
++    // fields
++    private String moveName;
++    private int movePower;
++    private int moveSpeed;
++
++    // constructor
++    public Move(String moveName, int movePower, int moveSpeed) {
++        this.moveName = moveName;
++        this.movePower = movePower;
++        this.moveSpeed = moveSpeed;
++    }
++
++    public String getMoveName() {
++        return moveName;
++    }
++
++    public int getMovePower() {
++        return movePower;
++    }
++
++    public int getMoveSpeed() {
++        return moveSpeed;
++    }
++
++    @Override
++    public String toString() {
++        return String.format("Move: %s\n" +
++                        "Power: %d\n" +
++                        "Speed: %d\n",
++                moveName, movePower, moveSpeed);
++    }
++}
++
+Index: src/weekEight/packageDemo/PersonTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekEight/packageDemo/PersonTest.java b/src/weekEight/packageDemo/PersonTest.java
+new file mode 100644
+--- /dev/null	(date 1729092827725)
++++ b/src/weekEight/packageDemo/PersonTest.java	(date 1729092827725)
+@@ -0,0 +1,14 @@
++package weekEight.packageDemo;
++
++public class PersonTest {
++    public static void main(String[] args) {
++
++        Person person = new Person("Joe Brooks", "Green", 30, "Center", "Boots");
++
++        System.out.println("Name: " + person.name);
++        System.out.println("Favorite Color: " + person.favoriteColor);
++        System.out.println("Age: " + person.getAge());
++        System.out.println("Road Name: " + person.getRoad());
++        System.out.println("Cat Name: " + person.getCatName());
++    }
++}
+Index: src/weekTwelve/labEleven/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/Main.java b/src/weekTwelve/labEleven/Main.java
+new file mode 100644
+--- /dev/null	(date 1731342231160)
++++ b/src/weekTwelve/labEleven/Main.java	(date 1731342231160)
+@@ -0,0 +1,8 @@
++package weekTwelve.labEleven;
++
++public class Main{
++    public static void main(String[] args) {
++        Menu menu = new Menu();
++        menu.displayMenu();
++    }
++}
+\ No newline at end of file
+Index: src/weekTwelve/labEleven/Pokemon.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/Pokemon.java b/src/weekTwelve/labEleven/Pokemon.java
+new file mode 100644
+--- /dev/null	(date 1730990695113)
++++ b/src/weekTwelve/labEleven/Pokemon.java	(date 1730990695113)
+@@ -0,0 +1,63 @@
++package weekTwelve.labEleven;
++
++import java.util.ArrayList;
++
++public class Pokemon {
++
++    // fields
++    private String name;
++    private int hp;
++    private ArrayList<Move> moveArrayList = new ArrayList<>();
++
++    // constructor : parameterized
++    public Pokemon(String name, int hp) {
++        this.name = name;
++        this.hp = hp;
++    }
++
++    // getter methods (behaviors)
++    public String getName() {
++        return name;
++    }
++
++    public int getHp() {
++        return hp;
++    }
++
++    public ArrayList<Move> getMoveArrayList() {
++
++        return moveArrayList;
++    }
++
++    public void addMove(Move move) {
++
++        moveArrayList.add(move);
++    }
++
++    public void removeMove(Move move) {
++        moveArrayList.remove(move);
++    }
++
++    public ArrayList<Move> getAllMoves() {
++        return moveArrayList;
++    }
++
++    public Move getMove(String moveName) {
++        Move foundMove = null;
++        for (Move move : moveArrayList) {
++            if (move.getMoveName().equals(moveName)) {
++                foundMove = move;
++                break;
++            }
++        }
++        return foundMove;
++    }
++
++    // OOP : polymorphism : run-time / override polymorphism
++    @Override
++    public String toString() {
++        return String.format("Name: %s\n" +
++                        "HP: %d\n",
++                name, hp);
++    }
++}
+Index: src/weekEight/packageDemo/Person.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekEight/packageDemo/Person.java b/src/weekEight/packageDemo/Person.java
+new file mode 100644
+--- /dev/null	(date 1729092783148)
++++ b/src/weekEight/packageDemo/Person.java	(date 1729092783148)
+@@ -0,0 +1,64 @@
++package weekEight.packageDemo;
++
++public class Person {
++
++    // instance variables
++
++    public String name;
++    public String favoriteColor;
++    private int age;
++    private String road;
++    private String catName;
++
++    // constructor
++
++    public Person(String name, String favoriteColor, int age, String road, String catName){
++
++        this.name = name;
++        this.favoriteColor = favoriteColor;
++        this.age = age;
++        this.road = road;
++        this.catName = catName;
++
++    }
++
++    public void displayInfo(){
++        System.out.println("Name: " + name + "Favorite Color: " + favoriteColor);
++    }
++
++    private void displayAge(){
++        System.out.println("Age: " + age);
++    }
++
++    protected void displayRoad(){
++        System.out.println("Road Name: " + road);
++    }
++
++    void displayCat(){
++        System.out.println("Cat Name: " + catName);
++    }
++
++    public int getAge(){
++        return age;
++    }
++
++    public void setAge(int age){
++        this.age = age;
++    }
++
++    public String getRoad(){
++        return road;
++    }
++
++    public void setRoad(String road){
++        this.road = road;
++    }
++
++    public String getCatName(){
++        return catName;
++    }
++
++    public void setCatName(String catName){
++        this.catName = catName;
++    }
++}
+Index: src/weekEight/packageDemo/StudentTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekEight/packageDemo/StudentTest.java b/src/weekEight/packageDemo/StudentTest.java
+new file mode 100644
+--- /dev/null	(date 1729093503545)
++++ b/src/weekEight/packageDemo/StudentTest.java	(date 1729093503545)
+@@ -0,0 +1,13 @@
++package weekEight.packageDemo;
++
++public class StudentTest {
++    public static void main(String[] args) {
++        Student student = new Student("Joey", "Smith", 16, "Computer Science", "9881");
++
++        System.out.println("First name: " + student.getFirstName());
++        System.out.println("Last name: " + student.getLastName());
++        System.out.println("Age: " + student.getAge());
++        System.out.println("Major: " + student.getMajor());
++        System.out.println("Student ID: " + student.getStudentID());
++    }
++}
+\ No newline at end of file
+Index: src/hashMap/LibraryUserTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/hashMap/LibraryUserTest.java b/src/hashMap/LibraryUserTest.java
+new file mode 100644
+--- /dev/null	(date 1730474209290)
++++ b/src/hashMap/LibraryUserTest.java	(date 1730474209290)
+@@ -0,0 +1,20 @@
++package hashMap;
++
++public class LibraryUserTest {
++    public static void main(String[] args) {
++        LibraryUser libuser = new LibraryUser();
++
++        libuser.addBorrowedBook("B101", "1984, 01/01/2024, 01/15/2024");
++        libuser.addBorrowedBook("B102", "Pride and Prejudice, 01/05/2024, 01/20/2024");
++        libuser.addBorrowedBook("B103", "Moby Dick, 01/10/2024, 01/25/2024");
++
++        System.out.println("\n---Borrowed Books---\n");
++        libuser.displayAllBorrowedBooks();
++
++        libuser.removeBorrowedBook("B101");
++
++        System.out.println("\n---Updated Borrowed Books---\n");
++        libuser.displayAllBorrowedBooks();
++
++    }
++}
+Index: src/weekEight/packageDemo/Student.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekEight/packageDemo/Student.java b/src/weekEight/packageDemo/Student.java
+new file mode 100644
+--- /dev/null	(date 1729093276411)
++++ b/src/weekEight/packageDemo/Student.java	(date 1729093276411)
+@@ -0,0 +1,49 @@
++package weekEight.packageDemo;
++
++public class Student {
++
++    private String firstName;
++    private String lastName;
++    private int age;
++    private String major;
++    private String studentID;
++
++    public Student(String firstName, String lastName, int age, String major, String studentID){
++        this.firstName = firstName;
++        this.lastName = lastName;
++        this.age = age;
++        this.major = major;
++        this.studentID = studentID;
++    }
++    public String getStudentID(){
++        return studentID;
++    }
++    public void setStudentID(String studentID){
++        this.studentID = studentID;
++    }
++    public String getFirstName(){
++        return firstName;
++    }
++    public void setFirstName(String firstName){
++        this.firstName = firstName;
++    }
++    public String getLastName(){
++        return lastName;
++    }
++    public void setLastName(String lastName){
++        this.lastName = lastName;
++    }
++    public int getAge(){
++        return age;
++    }
++    public void setAge(int age){
++        this.age = age;
++    }
++    public String getMajor(){
++        return major;
++    }
++    public void setMajor(String major){
++        this.major = major;
++    }
++
++}
+Index: src/hashMap/LibraryUser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/hashMap/LibraryUser.java b/src/hashMap/LibraryUser.java
+new file mode 100644
+--- /dev/null	(date 1730474223589)
++++ b/src/hashMap/LibraryUser.java	(date 1730474223589)
+@@ -0,0 +1,27 @@
++package hashMap;
++
++import java.util.HashMap;
++
++public class LibraryUser {
++    private String userName;
++    private String userID;
++    private String membershipType;
++    private HashMap<String,String> borrowedBooks;
++
++    public LibraryUser(){
++        borrowedBooks = new HashMap<>();
++    }
++    public void addBorrowedBook(String bookID, String details){
++        borrowedBooks.put(bookID, details);
++    }
++    public void removeBorrowedBook(String bookID){
++        borrowedBooks.remove(bookID);
++    }
++    public String getBorrowedBookDetails(String bookID){
++        return borrowedBooks.get(bookID);
++    }
++    public void displayAllBorrowedBooks(){
++        borrowedBooks.forEach((bookID, details) ->
++                System.out.printf("Book ID: %s \nBook Details: %s\n", bookID, details));
++    }
++}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1733411628649)
++++ b/.idea/vcs.xml	(date 1733411628649)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/projectTwo/TestScores.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/projectTwo/TestScores.java b/src/projectTwo/TestScores.java
+new file mode 100644
+--- /dev/null	(date 1729283976645)
++++ b/src/projectTwo/TestScores.java	(date 1729283976645)
+@@ -0,0 +1,107 @@
++package projectTwo;
++
++import java.util.Random;
++import java.util.Scanner;
++
++public class TestScores {
++
++    public static void main(String[] args) {
++
++        // variables
++
++        Random random = new Random();
++        Scanner scanner = new Scanner(System.in);
++        final int SIZE = random.nextInt(4, 10);
++
++        int[] testScores = new int[SIZE];
++        char[] letterGrades = new char[SIZE];
++
++        // scores
++
++        System.out.printf("\nPlease enter your %d test scores.\n", SIZE);
++        for (int i = 0; i < SIZE; i++) {
++            System.out.print("Enter the score for test " + (i + 1) + ": ");
++            testScores[i] = scanner.nextInt();
++        }
++
++        // scores to letters
++
++        for (int i = 0; i < SIZE; i ++){
++            letterGrades[i] = getLetterGrade(testScores[i]);
++        }
++
++        // calls
++
++        printGrades(testScores, letterGrades);
++        printHighestScore(testScores);
++        printLowestScore(testScores);
++        printAverageScore(testScores);
++
++    }
++
++    // getLetterGrade
++
++    private static char getLetterGrade(int score){
++
++        if (score >= 90){
++            return 'A';
++        }
++        else if (score >= 80) {
++            return 'B';
++        }
++        else if (score >= 70) {
++            return 'C';
++        }
++        else if (score >= 60) {
++            return 'D';
++        }
++        else {
++            return 'F';
++        }
++    }
++
++    // printGrades
++
++    private static void printGrades(int[] testScores, char[] letterGrades){
++
++        System.out.printf("\n%-15s %-15s%n\n", "-Score-", "-Grade-");
++        for (int i = 0; i < testScores.length; i++) {
++            System.out.printf("%-15d %-15c%n", testScores[i], letterGrades[i]);
++        }
++    }
++
++    // printHighestScore
++
++    private static void printHighestScore(int[] testScores){
++        int highestScore = testScores[0];
++        for (int score : testScores){
++            if (score > highestScore){
++                highestScore = score;
++            }
++        }
++        System.out.printf("\nThe highest score is %d", highestScore);
++    }
++
++    // printLowestScore
++
++    private static void printLowestScore(int[] testScores){
++        int lowestScore = testScores[0];
++        for (int score : testScores){
++            if (score < lowestScore){
++                lowestScore = score;
++            }
++        }
++        System.out.printf("\nThe lowest score is %d", lowestScore);
++    }
++
++    // printAverageScore
++
++    private static void printAverageScore(int [] testScores){
++        int scoresSum = 0;
++        for (int score : testScores){
++            scoresSum += score;
++        }
++        double average = (double) scoresSum /testScores.length;
++        System.out.printf("\nAverage: %.1f", average);
++    }
++}
+Index: src/ArrayListDemo/SystemTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/ArrayListDemo/SystemTest.java b/src/ArrayListDemo/SystemTest.java
+new file mode 100644
+--- /dev/null	(date 1730487855281)
++++ b/src/ArrayListDemo/SystemTest.java	(date 1730487855281)
+@@ -0,0 +1,24 @@
++package ArrayListDemo;
++
++public class SystemTest {
++    public static void main(String[] args) {
++
++        SystemManagement sys = new SystemManagement();
++
++        sys.addItems("Alice", "Jones", 23);
++        sys.addItems("John", "Pork", 33);
++        sys.addItems("Jane", "Parker",14);
++
++        System.out.println("For Each loop:");
++        sys.displayEach();
++        System.out.println("Standard For loop:");
++        sys.displayFor();
++
++        sys.removeItems(2);
++        System.out.println("Updated list size: " + sys.getSize());
++
++        System.out.println(sys.getElement(3));
++
++        sys.displayFor();
++    }
++}
+Index: src/weekNine/BankAccount.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekNine/BankAccount.java b/src/weekNine/BankAccount.java
+new file mode 100644
+--- /dev/null	(date 1729091599695)
++++ b/src/weekNine/BankAccount.java	(date 1729091599695)
+@@ -0,0 +1,53 @@
++package weekNine;
++
++import java.util.Random;
++
++public class BankAccount {
++    // instance variables
++    private String firstName;
++    private String lastName;
++    private int age;
++    private String accountType;
++    private double initialDeposit;
++    private String customerID;
++    private String accountConfirmationNumber;
++
++    // regular constructor
++    public BankAccount(String firstName, String lastName, int age, String accountType, double initialDeposit) {
++        this.firstName = firstName;
++        this.lastName = lastName;
++        this.age = age;
++        this.accountType = accountType;
++        this.initialDeposit = initialDeposit;
++        this.accountConfirmationNumber = generateAccountConfirmationNumber();
++    }
++
++    // premium constructor
++    public BankAccount(String customerID, String accountType) {
++        this.customerID = customerID;
++        this.accountType = accountType;
++        this.accountConfirmationNumber = generateAccountConfirmationNumber();
++    }
++
++    // account ID
++    private String generateAccountConfirmationNumber() {
++        Random rand = new Random();
++        int number = rand.nextInt(100000);
++        return "ACCOUNT " + number;
++    }
++
++    // regular display
++    public void displayAccountInfo() {
++        if (customerID != null) {
++            System.out.println("Customer ID: " + customerID);
++            System.out.println("Account Type: " + accountType);
++            System.out.println("Account Confirmation Number: " + accountConfirmationNumber);
++        } else {
++            System.out.println("Name: " + firstName + " " + lastName);
++            System.out.println("Age: " + age);
++            System.out.println("Account Type: " + accountType);
++            System.out.println("Initial Deposit: $" + initialDeposit);
++            System.out.println("Account Confirmation Number: " + accountConfirmationNumber);
++        }
++    }
++}
+\ No newline at end of file
+Index: src/ArrayListDemo/SystemManagement.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/ArrayListDemo/SystemManagement.java b/src/ArrayListDemo/SystemManagement.java
+new file mode 100644
+--- /dev/null	(date 1730487874909)
++++ b/src/ArrayListDemo/SystemManagement.java	(date 1730487874909)
+@@ -0,0 +1,67 @@
++package ArrayListDemo;
++import java.util.ArrayList;
++
++public class SystemManagement {
++
++    private ArrayList<String> firstName = new ArrayList<>();
++    private ArrayList<String> lastName = new ArrayList<>();
++    private ArrayList<Integer> ageList = new ArrayList<>();
++
++    public SystemManagement() {
++    }
++
++    // adding
++    public void addItems(String first, String last, int age) {
++        firstName.add(first);
++        lastName.add(last);
++        ageList.add(age);
++    }
++
++    // removing
++    public void removeItems(int num) {
++        if (num < firstName.size()) {
++            firstName.remove(num);
++            lastName.remove(num);
++            ageList.remove(num);
++        } else {
++            System.out.println("Invalid option. Choose again.");
++        }
++    }
++
++    public int getSize() {
++        return firstName.size();
++    }
++
++    public String getElement(int index) {
++        if (index >= 0 && index < firstName.size()) {
++            return "First Name: " + firstName.get(index) + "\nLast Name: " + lastName.get(index) + "\nAge: " + ageList.get(index);
++        } else {
++            return "Index invalid.";
++        }
++    }
++
++    public void displayEach() {
++
++        for (String first : firstName) {
++            System.out.println(first + " ");
++        }
++        System.out.println();
++        for (String last : lastName) {
++            System.out.println(last + " ");
++        }
++        System.out.println();
++        for (int age : ageList) {
++            System.out.println(age + " ");
++        }
++        System.out.println();
++    }
++
++    public void displayFor(){
++
++        for (int i = 0; i < firstName.size(); i++){
++            System.out.println("First Name: " + firstName.get(i) + "\nLast Name: " + lastName.get(i) + "\nAge: " + ageList.get(i));
++
++        }
++    }
++}
++
+Index: src/ArrayListDemo/TestCustomerInfo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/ArrayListDemo/TestCustomerInfo.java b/src/ArrayListDemo/TestCustomerInfo.java
+new file mode 100644
+--- /dev/null	(date 1730601542899)
++++ b/src/ArrayListDemo/TestCustomerInfo.java	(date 1730601542899)
+@@ -0,0 +1,39 @@
++package ArrayListDemo;
++
++import java.util.ArrayList;
++import java.util.Scanner;
++
++public class TestCustomerInfo{
++    public static void main(String[] args) {
++        ArrayList<String> firstName = new ArrayList<>();
++        ArrayList<String> lastName = new ArrayList<>();
++        ArrayList<Integer> ageList = new ArrayList<>();
++
++        Scanner scan = new Scanner(System.in);
++
++        while (true) {
++            System.out.println("Enter first name or 'q' to quit.");
++            String first = scan.nextLine();
++            if (first.equalsIgnoreCase("q")) break;
++            firstName.add(first);
++
++            System.out.println("Enter last name:");
++            String last = scan.nextLine();
++            lastName.add(last);
++
++            System.out.println("Enter age:");
++            int age = scan.nextInt();
++            ageList.add(age);
++
++            scan.nextLine();
++
++        }
++        System.out.println("---Information---");
++        System.out.printf("%-10s %-10s %-5s%n", "First name", "Last name", "Age");
++        for (int i = 0; i < firstName.size(); i++){
++            System.out.println();
++            System.out.printf("%-10s %-10s %-5s%n", firstName.get(i), lastName.get(i), ageList.get(i));
++        }
++        scan.close();
++    }
++}
+\ No newline at end of file
+Index: src/weekNine/BankAccountTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekNine/BankAccountTest.java b/src/weekNine/BankAccountTest.java
+new file mode 100644
+--- /dev/null	(date 1729091827806)
++++ b/src/weekNine/BankAccountTest.java	(date 1729091827806)
+@@ -0,0 +1,16 @@
++package weekNine;
++
++class BankAccountMain {
++    public static void main(String[] args) {
++
++        BankAccount regularAccount = new BankAccount("John", "Doe", 30, "Checking", 1000.0);
++        System.out.println("---REGULAR ACCOUNT---");
++        regularAccount.displayAccountInfo();
++        System.out.println();
++
++        BankAccount premiumAccount = new BankAccount("CUST12345", "Checking");
++        System.out.println("---PREMIUM ACCOUNT---");
++        premiumAccount.displayAccountInfo();
++
++    }
++}
+\ No newline at end of file
+Index: src/weekTwelve/labEleven/FileRead.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/FileRead.java b/src/weekTwelve/labEleven/FileRead.java
+new file mode 100644
+--- /dev/null	(date 1731434604424)
++++ b/src/weekTwelve/labEleven/FileRead.java	(date 1731434604424)
+@@ -0,0 +1,33 @@
++package weekTwelve.labEleven;
++import java.io.File;
++import java.io.FileNotFoundException;
++import java.util.ArrayList;
++import java.util.Scanner;
++public class FileRead {
++    public ArrayList<String[]> readPokemonData(String filename) throws FileNotFoundException {
++        File file = new File(filename);
++        ArrayList<String[]> pokemonData = new ArrayList<>();
++
++        try {
++            Scanner console = new Scanner(file);
++
++            while (console.hasNextLine()) {
++                String line = console.nextLine();
++                String[] data = line.split(","); // Split each line by comma
++
++                // Check if the line has the expected number of data fields
++                if (data.length == 5) {
++                    pokemonData.add(data); // Add the data to the list
++                } else {
++                    System.out.println("Invalid data format in line: " + line);
++                }
++            }
++            console.close();
++        } catch (FileNotFoundException e) {
++            System.out.println("File not found: " + filename);
++            throw e; // Re-throw exception to handle it in the calling function
++        }
++
++        return pokemonData;
++    }
++}
+Index: src/weekNine/PropertyListing.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekNine/PropertyListing.java b/src/weekNine/PropertyListing.java
+new file mode 100644
+--- /dev/null	(date 1729091261577)
++++ b/src/weekNine/PropertyListing.java	(date 1729091261577)
+@@ -0,0 +1,19 @@
++package weekNine;
++
++public class PropertyListing {
++
++    //attributes
++    private String propertyType;
++    private String location;
++
++    // constructor
++    public PropertyListing(String propertyType, String location) {
++        this.propertyType = propertyType;
++        this.location = location;
++    }
++
++    @Override
++    public String toString(){
++        return "Property Type: " + propertyType + "Location: " + location;
++    }
++}
+Index: src/weekNine/PremiumListing.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekNine/PremiumListing.java b/src/weekNine/PremiumListing.java
+new file mode 100644
+--- /dev/null	(date 1729090972861)
++++ b/src/weekNine/PremiumListing.java	(date 1729090972861)
+@@ -0,0 +1,16 @@
++package weekNine;
++
++public class PremiumListing extends PropertyListing{
++
++    private String feature;
++
++    public PremiumListing(String propertyType, String location, String feature) {
++        super(propertyType, location);
++        this.feature = feature;
++    }
++
++    @Override
++    public String toString(){
++        return super.toString() + "Feature: " + feature;
++    }
++}
+Index: src/weekTwo/ActivityOneDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwo/ActivityOneDialog.java b/src/weekTwo/ActivityOneDialog.java
+new file mode 100644
+--- /dev/null	(date 1724684752583)
++++ b/src/weekTwo/ActivityOneDialog.java	(date 1724684752583)
+@@ -0,0 +1,29 @@
++package weekTwo;
++
++import javax.swing.JOptionPane;
++
++public class ActivityOneDialog {
++        // shortcut main + tab
++        public static void main(String[] args) {
++            // P - principal amount
++            // r - annual interest rate
++            // n - number of times the interest is compounded annually
++            // t - specified number of years
++            // A - the amount of money in the account after the specified number of years
++
++            // declare
++            double P, r, A;
++            int n, t;
++
++            P = Double.parseDouble(JOptionPane.showInputDialog("Enter in the principal amount: "));
++            r = Double.parseDouble(JOptionPane.showInputDialog("Enter in the annual interest rate: ")) / 100;
++            n = Integer.parseInt(JOptionPane.showInputDialog("Enter in the number of times compounded: "));
++            t = Integer.parseInt(JOptionPane.showInputDialog("Enter in the number of years: "));
++
++            // A = P(1 + r/n)^nt
++            A = P * Math.pow((1 + r/n), n*t);
++            JOptionPane.showMessageDialog(null, String.format("The balance of the account after %d years will be $%.2f", t,A));
++
++        }
++    }
++
+Index: src/weekNine/RegularListing.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekNine/RegularListing.java b/src/weekNine/RegularListing.java
+new file mode 100644
+--- /dev/null	(date 1729091261590)
++++ b/src/weekNine/RegularListing.java	(date 1729091261590)
+@@ -0,0 +1,12 @@
++package weekNine;
++
++public class RegularListing extends PropertyListing{
++
++    public RegularListing(String propertyType, String location) {
++        super(propertyType, location);
++    }
++    @Override
++    public String toString(){
++        return super.toString() + " (Standard Listing)";
++    }
++}
+Index: src/weekTwo/WordGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwo/WordGame.java b/src/weekTwo/WordGame.java
+new file mode 100644
+--- /dev/null	(date 1724855398835)
++++ b/src/weekTwo/WordGame.java	(date 1724855398835)
+@@ -0,0 +1,22 @@
++package weekTwo;
++
++import javax.swing.*;
++
++import static javax.swing.JOptionPane.*;
++
++public class WordGame {
++    public static void main(String[] args) {
++        // variables
++        String name = showInputDialog("Please enter your name: ");
++        String city = showInputDialog("Please enter your hometown: ");
++        String college = showInputDialog("Please enter the name of your university: ");
++        String major = showInputDialog("Please enter the name of your major: ");
++        String band = showInputDialog("Please enter your favorite band's name: ");
++        String hobby = showInputDialog("Please enter your favorite hobby: ");
++
++        String message = String.format("There once was a student named %s. They are from %s and attend %s to study %s. They like to listen to %s and they enjoy %s.", name, city, college, major, band, hobby);
++        // display
++        JOptionPane.showMessageDialog(null, message);
++
++    }
++}
+Index: src/weekThirteen/setAndIteratorActivity/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThirteen/setAndIteratorActivity/Main.java b/src/weekThirteen/setAndIteratorActivity/Main.java
+new file mode 100644
+--- /dev/null	(date 1731341055424)
++++ b/src/weekThirteen/setAndIteratorActivity/Main.java	(date 1731341055424)
+@@ -0,0 +1,39 @@
++package weekThirteen.setAndIteratorActivity;
++
++import java.util.Scanner;
++
++public class Main {
++    public static void main(String[] args) {
++
++        RealEstateSet instance = new RealEstateSet();
++        Scanner scan = new Scanner(System.in);
++        System.out.println("\n----- Real Estate Property Management System -----");
++
++        // menu
++
++        while(true){
++            System.out.println("\nPlease select an option:" +
++                    "\n1: Add a property ID" +
++                    "\n2: View all property IDs" +
++                    "\n3: Exit");
++            int menuInput = scan.nextInt();
++            switch (menuInput){
++                case 1:
++                    instance.addProperties();
++                    break;
++                case 2:
++                    instance.displayProperties();
++                    break;
++                case 3:
++                    System.out.println("Exiting...");
++                    scan.close();
++                    return;
++                default:
++                    System.out.println("Invalid input.");
++                    break;
++            }
++        }
++
++
++    }
++}
+Index: src/weekThirteen/setAndIteratorActivity/RealEstateSet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThirteen/setAndIteratorActivity/RealEstateSet.java b/src/weekThirteen/setAndIteratorActivity/RealEstateSet.java
+new file mode 100644
+--- /dev/null	(date 1731340869157)
++++ b/src/weekThirteen/setAndIteratorActivity/RealEstateSet.java	(date 1731340869157)
+@@ -0,0 +1,36 @@
++package weekThirteen.setAndIteratorActivity;
++
++import java.util.HashSet;
++import java.util.Scanner;
++import java.util.Set;
++import java.util.Iterator;
++
++public class RealEstateSet {
++    Set<String> propertyListings = new HashSet<>();
++
++    public void addProperties() {
++
++        Scanner scan = new Scanner(System.in);
++
++        System.out.println("Enter property IDs to add (enter '0' to quit):");
++        while(true){
++            int propertyID = scan.nextInt();
++            if (propertyID == 0){
++                break;
++            } else{
++                propertyListings.add(String.valueOf(propertyID));
++            }
++        }
++    }
++
++    public void displayProperties(){
++
++        System.out.println("\n----- PROPERTY LISTINGS -----\n");
++        Iterator<String> iter = propertyListings.iterator();
++
++        while (iter.hasNext()){
++            String property = iter.next();
++            System.out.println(property);
++        }
++    }
++}
+Index: src/weekNine/MainPropertyListing.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekNine/MainPropertyListing.java b/src/weekNine/MainPropertyListing.java
+new file mode 100644
+--- /dev/null	(date 1729091272611)
++++ b/src/weekNine/MainPropertyListing.java	(date 1729091272611)
+@@ -0,0 +1,13 @@
++package weekNine;
++
++public class MainPropertyListing {
++    public static void main(String[] args) {
++
++
++        PropertyListing regular = new RegularListing("Apartment, ", "Downtown");
++        PropertyListing premium = new PremiumListing("Villa, ", "Uptown, ", "Swimming Pool");
++
++        System.out.println(regular.toString());
++        System.out.println(premium.toString());
++    }
++}
+Index: src/weekTwo/BookClubPoints.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwo/BookClubPoints.java b/src/weekTwo/BookClubPoints.java
+new file mode 100644
+--- /dev/null	(date 1725027482140)
++++ b/src/weekTwo/BookClubPoints.java	(date 1725027482140)
+@@ -0,0 +1,39 @@
++package weekTwo;
++
++import javax.swing.*;
++
++public class BookClubPoints {
++    public static void main(String[] args) {
++
++        int bookNumber, points;
++
++        bookNumber = Integer.parseInt(JOptionPane.showInputDialog("Please enter the number of books you have purchased this month: "));
++        if (bookNumber == 0){
++            points = 0;
++            JOptionPane.showMessageDialog(null, String.format("Your points: %d", points));
++        }
++        else if (bookNumber == 1){
++            points = 5;
++            JOptionPane.showMessageDialog(null, String.format("Your points: %d", points));
++        }
++        else if (bookNumber == 2){
++            points = 15;
++            JOptionPane.showMessageDialog(null, String.format("Your points: %d", points));
++        }
++        else if (bookNumber == 3){
++            points = 30;
++            JOptionPane.showMessageDialog(null, String.format("Your points: %d", points));
++        }
++        else if (bookNumber >= 4){
++            points = 60;
++            JOptionPane.showMessageDialog(null, String.format("Your points: %d", points));
++        }
++
++
++
++
++
++
++
++    }
++}
+Index: src/weekTwo/TestScores.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwo/TestScores.java b/src/weekTwo/TestScores.java
+new file mode 100644
+--- /dev/null	(date 1725028269208)
++++ b/src/weekTwo/TestScores.java	(date 1725028269208)
+@@ -0,0 +1,32 @@
++package weekTwo;
++
++import javax.swing.*;
++
++public class TestScores {
++    public static void main(String[] args) {
++
++        int scoreOne, scoreTwo, scoreThree, average;
++
++        scoreOne = Integer.parseInt(JOptionPane.showInputDialog("Please enter the first score: "));
++        scoreTwo = Integer.parseInt(JOptionPane.showInputDialog("Please enter the second score: "));
++        scoreThree = Integer.parseInt(JOptionPane.showInputDialog("Please enter the third score: "));
++
++        average = (scoreOne + scoreTwo + scoreThree) / 3;
++
++        if (average >= 90 && average <= 100){
++            JOptionPane.showMessageDialog(null, String.format("Score average: %d\nLetter grade: %s", average, "A"));
++        }
++        else if (average >= 80 && average <= 89){
++            JOptionPane.showMessageDialog(null, String.format("Score average: %d\nLetter grade: %s", average, "B"));
++        }
++        else if (average >= 70 && average <= 79){
++            JOptionPane.showMessageDialog(null, String.format("Score average: %d\nLetter grade: %s", average, "C"));
++        }
++        else if (average >= 60 && average <= 69){
++            JOptionPane.showMessageDialog(null, String.format("Score average: %d\nLetter grade: %s", average, "D"));
++        }
++        else if (average < 60){
++            JOptionPane.showMessageDialog(null, String.format("Score average: %d\nLetter grade: %s", average, "F"));
++        }
++    }
++}
+Index: src/weekThree/RestaurantSelector.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThree/RestaurantSelector.java b/src/weekThree/RestaurantSelector.java
+new file mode 100644
+--- /dev/null	(date 1725460987085)
++++ b/src/weekThree/RestaurantSelector.java	(date 1725460987085)
+@@ -0,0 +1,28 @@
++package weekThree;
++
++import javax.swing.*;
++
++public class RestaurantSelector {
++    public static void main(String[] args) {
++
++        String vegetarian, vegan, glutenFree;
++
++        vegetarian = String.format(JOptionPane.showInputDialog("Is anyone in your party a vegetarian?"));
++        vegan = String.format(JOptionPane.showInputDialog("Is anyone in your party a vegan?"));
++        glutenFree = String.format(JOptionPane.showInputDialog("Is anyone in your party gluten-free?"));
++
++        if ((vegetarian.equals("yes")) && (vegan.equals("yes")) && (glutenFree.equals("yes"))) {
++            JOptionPane.showMessageDialog(null, "Here are your options: \nCorner Cafe\n The Chef's Kitchen");
++        }
++        else if ((vegetarian.equals("no")) && (vegan.equals("no")) && (glutenFree.equals("no"))) {
++            JOptionPane.showMessageDialog(null, "Here are your options: Joe's Gourmet Burgers");
++        }
++        else if ((vegetarian.equals("yes")) && (vegan.equals("no")) && (glutenFree.equals("yes"))) {
++            JOptionPane.showMessageDialog(null, "Here are your options: Main Street Pizza Company");
++        }
++        else if ((vegetarian.equals("yes")) && (vegan.equals("no")) && (glutenFree.equals("no"))) {
++            JOptionPane.showMessageDialog(null, "Here are your options: Mama's Fine Italian");
++        }
++        else JOptionPane.showMessageDialog(null, "No options available.");
++    }
++}
+Index: src/weekThree/labThree/Login.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThree/labThree/Login.java b/src/weekThree/labThree/Login.java
+new file mode 100644
+--- /dev/null	(date 1725545513100)
++++ b/src/weekThree/labThree/Login.java	(date 1725545513100)
+@@ -0,0 +1,27 @@
++package weekThree.labThree;
++import javax.swing.*;
++
++public class Login {
++    public static void main(String[] args) {
++        //joptionpane
++        String userName = ("computer");
++        String password = ("arachnid");
++        String  name, pw;
++
++        name = String.format(JOptionPane.showInputDialog("Enter user name plz"));
++        pw = String.format(JOptionPane.showInputDialog("Plz enter password"));
++
++        if (name.equals(userName)){
++            if (pw.equals(password)){
++                JOptionPane.showMessageDialog(null,"Welcome to CS 121!");
++            }
++            else JOptionPane.showMessageDialog(null, "Incorrect Password");
++        }
++        else if (password.equals(pw)){
++            JOptionPane.showMessageDialog(null, "Incorrect user name");
++        }
++        else JOptionPane.showMessageDialog(null,"Both user name and password incorrect.");
++
++
++    }
++}
+Index: src/weekThree/labThree/EvenOrOdd.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThree/labThree/EvenOrOdd.java b/src/weekThree/labThree/EvenOrOdd.java
+new file mode 100644
+--- /dev/null	(date 1725544072950)
++++ b/src/weekThree/labThree/EvenOrOdd.java	(date 1725544072950)
+@@ -0,0 +1,21 @@
++package weekThree.labThree;
++import java.util.Scanner;
++
++public class EvenOrOdd {
++    public static void main(String[] args) {
++        //scanner
++
++        Scanner scan = new Scanner(System.in);
++
++        int input;
++
++        System.out.println("Enter a number: ");
++        input = scan.nextInt();
++
++        if ((input % 2) == 0){
++            System.out.println("Even");
++        }
++        else System.out.println("Odd");
++
++    }
++}
+Index: src/weekTwelve/labEleven/CharacterStatsFile (1).txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/CharacterStatsFile (1).txt b/src/weekTwelve/labEleven/CharacterStatsFile (1).txt
+new file mode 100644
+--- /dev/null	(date 1731437429848)
++++ b/src/weekTwelve/labEleven/CharacterStatsFile (1).txt	(date 1731437429848)
+@@ -0,0 +1,10 @@
++Pikachu,35,Thunderbolt,90,100
++Charmander,39,Flamethrower,95,100
++Bulbasaur,45,Vine Whip,45,60
++Squirtle,44,Water Gun,40,90
++Jigglypuff,115,Body Slam,85,45
++Eevee,55,Quick Attack,40,100
++Snorlax,160,Hyper Beam,150,50
++Charizard,78,Fire Blast,110,85
++Gengar,60,Shadow Ball,80,90
++Mewtwo,106,Psychic,90,130
+Index: src/weekTwelve/labEleven/FileWrite.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/FileWrite.java b/src/weekTwelve/labEleven/FileWrite.java
+new file mode 100644
+--- /dev/null	(date 1731434574738)
++++ b/src/weekTwelve/labEleven/FileWrite.java	(date 1731434574738)
+@@ -0,0 +1,47 @@
++package weekTwelve.labEleven;
++
++import javax.swing.*;
++import java.io.File;
++import java.io.FileNotFoundException;
++import java.io.PrintWriter;
++import java.util.Scanner;
++
++public class FileWrite {
++    public static void main(String[] args) throws FileNotFoundException {
++        // creating an instance
++        File outputFile = new File("TestingFileWrite.txt");
++        PrintWriter output = new PrintWriter(outputFile);
++        Scanner scan = new Scanner(System.in);
++
++        // header
++        // %s --> String
++        output.printf("%-20s %-20s %-17s %-20s %-20s","<User Name>", "<Password>", "<Score>", "<Player Character>", "<Winning Percentage>");
++
++
++        // declare variables
++        String name, password, playerCharacter;
++        int score;
++        double winningPercentage;
++
++        // prompt the user
++        for(int i = 0; i < 2; i++){
++            //string
++
++            name = JOptionPane.showInputDialog(String.format("Enter user %d's user name:", (i + 1)));
++            password = JOptionPane.showInputDialog(String.format("Enter user %d's password:", (i + 1)));
++            playerCharacter = JOptionPane.showInputDialog(String.format("Enter user %d's character:", (i + 1)));
++
++            // integer
++            score = Integer.parseInt(JOptionPane.showInputDialog(String.format("Enter user %d's score:", (i + 1))));
++
++            // double
++            winningPercentage = Double.parseDouble(JOptionPane.showInputDialog(String.format("Enter user %d's winning percentage:", (i + 1))));
++
++            // write to file
++            output.printf("%n %-20s %-20s %6d %23s %15.2f", name, password, score, playerCharacter, winningPercentage);
++        }
++        scan.close();
++        output.close(); // close the PrintWriter
++    }
++
++}
+Index: src/weekThree/labThree/Triangles.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThree/labThree/Triangles.java b/src/weekThree/labThree/Triangles.java
+new file mode 100644
+--- /dev/null	(date 1725546113871)
++++ b/src/weekThree/labThree/Triangles.java	(date 1725546113871)
+@@ -0,0 +1,25 @@
++package weekThree.labThree;
++
++import java.util.Scanner;
++
++public class Triangles {
++    public static void main(String[] args) {
++        //either
++        Scanner scan = new Scanner(System.in);
++
++        int sideOne, sideTwo, sideThree;
++
++        System.out.println("Please enter three side lengths: ");
++        sideOne = scan.nextInt();
++        sideTwo = scan.nextInt();
++        sideThree = scan.nextInt();
++
++        if ((sideOne != sideTwo) && (sideOne != sideThree) && (sideTwo != sideThree)) {
++            System.out.println("Scalene");
++        } else if ((sideOne != sideTwo) && (sideOne == sideThree) || (sideOne == sideTwo) && (sideOne != sideThree) || (sideOne != sideTwo) && (sideTwo == sideThree)){
++            System.out.println("Isosceles");
++        } else if ((sideOne == sideTwo) && (sideOne == sideThree)) {
++            System.out.println("Equilateral");
++        } else System.out.println("Not a triangle");
++    }
++}
+Index: src/weekTwelve/labEleven/FileAppend.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwelve/labEleven/FileAppend.java b/src/weekTwelve/labEleven/FileAppend.java
+new file mode 100644
+--- /dev/null	(date 1731434574776)
++++ b/src/weekTwelve/labEleven/FileAppend.java	(date 1731434574776)
+@@ -0,0 +1,35 @@
++package weekTwelve.labEleven;
++
++import javax.swing.*;
++import java.io.FileNotFoundException;
++import java.io.FileWriter;
++import java.io.IOException;
++import java.io.PrintWriter;
++
++public class FileAppend {
++    public static void main(String[] args) throws IOException {
++        // syntax: try{}catch(){}
++        try{
++            // create instances
++            FileWriter fileWriter = new FileWriter("TestingFileWrite.txt",true);
++            PrintWriter output = new PrintWriter(fileWriter);
++
++            // declare variables
++            String name = JOptionPane.showInputDialog("Enter the user's name:");
++            String password = JOptionPane.showInputDialog("Enter the user's password:");
++            String playerCharacter = JOptionPane.showInputDialog("Enter the user's character:");
++            int score = Integer.parseInt(JOptionPane.showInputDialog("Enter the user's score:"));
++            double winningPercentage = Double.parseDouble(JOptionPane.showInputDialog("Enter the user's winning percentage:"));
++
++            // write to the file
++            output.printf("%n %-20s %-20s %6d %23s %15.2f", name, password, score, playerCharacter, winningPercentage);
++
++            // close
++            fileWriter.close();
++            output.close();
++
++        }catch(FileNotFoundException e){
++            System.err.println("Your file wasn't found. L");
++        }
++    }
++}
+Index: src/weekTen/abstractClasses/Customer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/abstractClasses/Customer.java b/src/weekTen/abstractClasses/Customer.java
+new file mode 100644
+--- /dev/null	(date 1729874634715)
++++ b/src/weekTen/abstractClasses/Customer.java	(date 1729874634715)
+@@ -0,0 +1,15 @@
++package weekTen.abstractClasses;
++
++public class Customer extends User {
++    private String reservationDetails;
++
++    public Customer(String name, String contactNumber, String email, String password, String reservationDetails) {
++        super(name, contactNumber, email, password);
++        this.reservationDetails = reservationDetails;
++    }
++
++    @Override
++    public String getUserDetails() {
++        return "Customer: " + name + ", Contact: " + contactNumber + ", Email: " + email + ", Reservation: " + reservationDetails;
++    }
++}
+Index: src/weekThree/SwitchStatements.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThree/SwitchStatements.java b/src/weekThree/SwitchStatements.java
+new file mode 100644
+--- /dev/null	(date 1725632609983)
++++ b/src/weekThree/SwitchStatements.java	(date 1725632609983)
+@@ -0,0 +1,30 @@
++package weekThree;
++import java.util.Scanner;
++
++public class SwitchStatements {
++    public static void main(String[] args) {
++
++        Scanner scan = new Scanner(System.in);
++        System.out.println("Please enter a season (Winter, Spring, Summer, Fall):");
++        String season = scan.nextLine();
++
++        switch(season){
++            case "Winter":
++                System.out.println("Winter months: December, January, February");
++                break;
++            case "Spring":
++                System.out.println("Spring months: March, April, May");
++                break;
++            case "Summer":
++                System.out.println("Summer months: June, July, August");
++                break;
++            case "Fall":
++                System.out.println("Fall months: September, October, November");
++                break;
++            default:
++                System.out.println("Please enter a valid season.");
++                break;
++        }
++
++    }
++}
+Index: src/weekTen/interfaces/Interactable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/interfaces/Interactable.java b/src/weekTen/interfaces/Interactable.java
+new file mode 100644
+--- /dev/null	(date 1729874669211)
++++ b/src/weekTen/interfaces/Interactable.java	(date 1729874669211)
+@@ -0,0 +1,5 @@
++package weekTen.interfaces;
++
++public interface Interactable {
++    void interact();
++}
+Index: src/weekTen/abstractClasses/Staff.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/abstractClasses/Staff.java b/src/weekTen/abstractClasses/Staff.java
+new file mode 100644
+--- /dev/null	(date 1729874647646)
++++ b/src/weekTen/abstractClasses/Staff.java	(date 1729874647646)
+@@ -0,0 +1,16 @@
++package weekTen.abstractClasses;
++
++public class Staff extends User {
++    private String role;
++
++    public Staff(String name, String contactNumber, String email, String password, String role) {
++        super(name, contactNumber, email, password);
++        this.role = role;
++    }
++
++    @Override
++    public String getUserDetails() {
++        return "Staff: " + name + ", Contact: " + contactNumber + ", Email: " + email + ", Role: " + role;
++    }
++}
++
+Index: src/weekTen/interfaces/StaffInteractable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/interfaces/StaffInteractable.java b/src/weekTen/interfaces/StaffInteractable.java
+new file mode 100644
+--- /dev/null	(date 1729874427351)
++++ b/src/weekTen/interfaces/StaffInteractable.java	(date 1729874427351)
+@@ -0,0 +1,8 @@
++package weekTen.interfaces;
++
++public class StaffInteractable implements Interactable {
++    @Override
++    public void interact() {
++        System.out.println("Staff is managing the restaurant operations.");
++    }
++}
+Index: src/weekTen/interfaces/CustomerInteractable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/interfaces/CustomerInteractable.java b/src/weekTen/interfaces/CustomerInteractable.java
+new file mode 100644
+--- /dev/null	(date 1729874679561)
++++ b/src/weekTen/interfaces/CustomerInteractable.java	(date 1729874679561)
+@@ -0,0 +1,8 @@
++package weekTen.interfaces;
++
++public class CustomerInteractable implements Interactable {
++    @Override
++    public void interact() {
++        System.out.println("Customer is reserving a table and placing an order.");
++    }
++}
+Index: src/weekTen/abstractClasses/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/abstractClasses/User.java b/src/weekTen/abstractClasses/User.java
+new file mode 100644
+--- /dev/null	(date 1729874773016)
++++ b/src/weekTen/abstractClasses/User.java	(date 1729874773016)
+@@ -0,0 +1,17 @@
++package weekTen.abstractClasses;
++
++public abstract class User {
++    protected String name;
++    protected String contactNumber;
++    protected String email;
++    protected String password;
++
++    public User(String name, String contactNumber, String email, String password) {
++        this.name = name;
++        this.contactNumber = contactNumber;
++        this.email = email;
++        this.password = password;
++    }
++
++    public abstract String getUserDetails();
++}
+Index: src/weekTen/abstractClasses/TestAbstractClasses.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/abstractClasses/TestAbstractClasses.java b/src/weekTen/abstractClasses/TestAbstractClasses.java
+new file mode 100644
+--- /dev/null	(date 1729874791460)
++++ b/src/weekTen/abstractClasses/TestAbstractClasses.java	(date 1729874791460)
+@@ -0,0 +1,11 @@
++package weekTen.abstractClasses;
++
++public class TestAbstractClasses {
++    public static void main(String[] args) {
++        User customer = new Customer("Alice", "123-456-7890", "alice@example.com", "pass123", "Table for 2 at 7 PM");
++        User staff = new Staff("Bob", "098-765-4321", "bob@example.com", "pass456", "Manager");
++
++        System.out.println(customer.getUserDetails());
++        System.out.println(staff.getUserDetails());
++    }
++}
+Index: src/weekThirteen/Test.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThirteen/Test.java b/src/weekThirteen/Test.java
+new file mode 100644
+--- /dev/null	(date 1731596141725)
++++ b/src/weekThirteen/Test.java	(date 1731596141725)
+@@ -0,0 +1,20 @@
++package weekThirteen;
++
++public class Test {
++    /*public static void main(String[] args) {
++
++        ValidParenthesis valid = new ValidParenthesis();
++        System.out.println(valid.isValid("({[]})"));
++        System.out.println(valid.isValid("({[)}]"));
++    }
++
++     */
++    public static void main(String[] args) {
++
++        RecentCounter recCou = new RecentCounter();
++        System.out.println(recCou.ping(1));
++        System.out.println(recCou.ping(100));
++        System.out.println(recCou.ping(3001));
++        System.out.println(recCou.ping(3002));
++    }
++}
+Index: src/weekTen/interfaces/TestInterfaces.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTen/interfaces/TestInterfaces.java b/src/weekTen/interfaces/TestInterfaces.java
+new file mode 100644
+--- /dev/null	(date 1729874848889)
++++ b/src/weekTen/interfaces/TestInterfaces.java	(date 1729874848889)
+@@ -0,0 +1,11 @@
++package weekTen.interfaces;
++
++public class TestInterfaces {
++    public static void main(String[] args) {
++        Interactable customer = new CustomerInteractable();
++        Interactable staff = new StaffInteractable();
++
++        customer.interact();
++        staff.interact();
++    }
++}
+Index: src/weekThirteen/RecentCounter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThirteen/RecentCounter.java b/src/weekThirteen/RecentCounter.java
+new file mode 100644
+--- /dev/null	(date 1731596141716)
++++ b/src/weekThirteen/RecentCounter.java	(date 1731596141716)
+@@ -0,0 +1,18 @@
++package weekThirteen;
++import java.util.*;
++
++public class RecentCounter {
++
++    private Queue<Integer> queue = new LinkedList<>();
++    public RecentCounter(){
++
++    }
++    public int ping(int t){
++        queue.add(t);
++        while (queue.peek() < t - 3000){
++            queue.poll();
++        }
++        return queue.size();
++    }
++}
++
+Index: src/weekThirteen/ValidParenthesis.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThirteen/ValidParenthesis.java b/src/weekThirteen/ValidParenthesis.java
+new file mode 100644
+--- /dev/null	(date 1731512825329)
++++ b/src/weekThirteen/ValidParenthesis.java	(date 1731512825329)
+@@ -0,0 +1,25 @@
++package weekThirteen;
++import java.util.Stack;
++public class ValidParenthesis {
++
++    public boolean isValid(String s){
++
++        Stack<Character> stack = new Stack<>();
++
++        for (char c : s.toCharArray()) {
++            if (c == '(' || c == '{' || c == '['){
++                stack.push(c);
++            } else {
++                if (stack.isEmpty()) return false;
++
++                char top = stack.pop();
++                if (c == ')' && top != '(' ||
++                        (c == '}' && top != '{') ||
++                                (c == ']' && top != '[')){
++                    return false;
++                }
++            }
++        }
++        return stack.isEmpty();
++    }
++}
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(date 1724421766869)
++++ b/.gitignore	(date 1724421766869)
+@@ -0,0 +1,29 @@
++### IntelliJ IDEA ###
++out/
++!**/src/main/**/out/
++!**/src/test/**/out/
++
++### Eclipse ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++bin/
++!**/src/main/**/bin/
++!**/src/test/**/bin/
++
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++
++### VS Code ###
++.vscode/
++
++### Mac OS ###
++.DS_Store
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1724422562440)
++++ b/.idea/modules.xml	(date 1724422562440)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/CS121.iml" filepath="$PROJECT_DIR$/CS121.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1730991813040)
++++ b/.idea/misc.xml	(date 1730991813040)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_22_PREVIEW" project-jdk-name="22" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/weekThirteen/DataStructure.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThirteen/DataStructure.java b/src/weekThirteen/DataStructure.java
+new file mode 100644
+--- /dev/null	(date 1731689090101)
++++ b/src/weekThirteen/DataStructure.java	(date 1731689090101)
+@@ -0,0 +1,105 @@
++package weekThirteen;
++import java.util.ArrayList;
++import java.util.HashMap;
++import java.util.LinkedList;
++import java.util.Queue;
++import java.util.Stack;
++public class DataStructure {
++    private ArrayList<String> studentList = new ArrayList<>();
++    private int[] ageList = new int[3];
++    private HashMap<String, Double> majorGpaMap = new HashMap<>();
++    private LinkedList<String> nationalityList = new LinkedList<>();
++    private Stack<String> hometownStack = new Stack<>();
++    private Queue<String> homeStateQueue = new LinkedList<>();
++
++    // student
++    public void addStudent(String name) {
++        studentList.add(name);
++    }
++    public void removeStudent(String name) {
++        if (studentList.contains(name)) {
++            studentList.remove(name);
++        } else System.err.println("Error! The student name you entered does not exist.");
++    }
++    public void printStudent() {
++        System.out.println("\nStudents:");
++        for (int i = 0; i < studentList.size(); i++) ;
++        System.out.println(studentList);
++    }
++
++    // age
++    int ageIndex = 0;
++
++    public void addAge(int age) {
++        if (ageIndex < ageList.length) {
++            ageList[ageIndex++] = age;
++        }
++    }
++    public void removeAge() {
++        if (ageIndex > 0) {
++            ageList[--ageIndex] = 0;
++        }
++    }
++    public void printAge() {
++        System.out.println("\nAges: ");
++        for (int i = 0; i < ageList.length; i++) {
++            System.out.print(ageList[i] + "  ");
++        }
++        System.out.println();
++    }
++
++    // GPA
++
++    public void addGPA(String name, double GPA) {
++        majorGpaMap.put(name, GPA);
++    }
++    public void removeGPA(String GPAName) {
++        if (majorGpaMap.containsKey(GPAName)){
++            majorGpaMap.remove(GPAName);
++        }
++    }
++    public void printGPA() {
++        System.out.println("\nGPAs:");
++        System.out.println(majorGpaMap);
++    }
++
++    // nationality
++
++    public void addNationality(String nationality) {
++        nationalityList.add(nationality);
++    }
++    public void removeNationality(String nationality) {
++        if (nationalityList.contains(nationality)) {
++            nationalityList.remove(nationality);
++        } else System.err.println("Error! The nationality you entered does not exist.");
++    }
++    public void printNationality(){
++        System.out.println("\nNationalities:");
++        System.out.println(nationalityList);
++    }
++
++    // homestack
++    public void pushStack(String hometown){
++        hometownStack.push(hometown);
++    }
++    public void popStack(){
++        hometownStack.pop();
++    }
++    public void printStack(){
++        System.out.println("\nHometown Stacks:");
++        System.out.println(hometownStack);
++    }
++
++    // homequeue
++
++    public void addQueue(String townhome){
++        homeStateQueue.offer(townhome);
++    }
++    public void removeQueue(){
++        homeStateQueue.remove();
++    }
++    public void printQueue(){
++        System.out.println("\nHometown Queues:");
++        System.out.println(homeStateQueue);
++    }
++}
+Index: src/weekTwo/ActivityOne.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekTwo/ActivityOne.java b/src/weekTwo/ActivityOne.java
+new file mode 100644
+--- /dev/null	(date 1724684256562)
++++ b/src/weekTwo/ActivityOne.java	(date 1724684256562)
+@@ -0,0 +1,52 @@
++package weekTwo;
++
++import java.util.Scanner;
++
++// scanner
++public class ActivityOne {
++
++    /*
++    // shortcut main + tab
++    public static void main(String[] args) {
++        // P - principal amount
++        // r - annual interest rate
++        // n - number of times the interest is compounded annually
++        // t - specified number of years
++        // A - the amount of money in the account after the specified number of years
++
++        // declare
++        double P, r, A;
++        int n, t;
++
++        // prompt user
++        // sout + tab
++        System.out.println("Enter in the principal amount: ");
++
++        // make Scanner object
++        // declare an object of class
++        // create an instance of the scanner class
++        Scanner scn = new Scanner(System.in);
++        //  scn.nextDouble(); or Double.parseDouble(scn.nextLine());
++        // scn.nextInt() or Integer.parseInt(scn.nextLine());
++        P = Double.parseDouble(scn.nextLine()); //2000
++        System.out.println("Enter in the annual interest rate: "); //8
++        r = Double.parseDouble(scn.nextLine())/100;
++        System.out.println("Enter in the number of times compounded: "); //12
++        n = Integer.parseInt(scn.nextLine());
++        System.out.println("Enter in the number of years: "); //5
++        t = Integer.parseInt(scn.nextLine());
++
++        // A = P(1 + r/n)^nt
++        A = P * Math.pow((1 + r/n), n*t);
++        // %s for string
++        // %f for float
++        // %d for integer
++        // %c for character
++        System.out.printf("After %d years you will have $%.2f", t, A);
++
++
++
++    }
++
++     */
++}
+Index: CS121.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CS121.iml b/CS121.iml
+new file mode 100644
+--- /dev/null	(date 1724421769356)
++++ b/CS121.iml	(date 1724421769356)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1724421772693)
++++ b/.idea/.gitignore	(date 1724421772693)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: src/weekThirteen/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/weekThirteen/Main.java b/src/weekThirteen/Main.java
+new file mode 100644
+--- /dev/null	(date 1731689065634)
++++ b/src/weekThirteen/Main.java	(date 1731689065634)
+@@ -0,0 +1,63 @@
++package weekThirteen;
++
++public class Main {
++    public static void main(String[] args) {
++        DataStructure datStr = new DataStructure();
++
++        //add
++
++        //student
++        datStr.addStudent("John");
++        datStr.addStudent("Caitlyn");
++        datStr.addStudent("Pete");
++        //age
++        datStr.addAge(30);
++        datStr.addAge(14);
++        datStr.addAge(94);
++        //GPA
++        datStr.addGPA("Joe",3.32);
++        datStr.addGPA("Paul",2.63);
++        datStr.addGPA("Francis",1.44);
++        //nationality
++        datStr.addNationality("White");
++        datStr.addNationality("Black");
++        datStr.addNationality("Latina");
++        //pushStack
++        datStr.pushStack("Richmond");
++        datStr.pushStack("Lynn");
++        datStr.pushStack("Fishers");
++        //addQueue
++        datStr.addQueue("Indianapolis");
++        datStr.addQueue("Winchester");
++        datStr.addQueue("Williamsburg");
++
++        //display
++
++        System.out.println("\n*** Information ***");
++        datStr.printStudent();
++        datStr.printAge();
++        datStr.printGPA();
++        datStr.printNationality();
++        datStr.printStack();
++        datStr.printQueue();
++
++        //remove
++
++        datStr.removeStudent("John");
++        datStr.removeAge();
++        datStr.removeGPA("Joe");
++        datStr.removeNationality("White");
++        datStr.popStack();
++        datStr.removeQueue();
++
++        //updated display
++
++        System.out.println("\n*** Updated Information ***");
++        datStr.printStudent();
++        datStr.printAge();
++        datStr.printGPA();
++        datStr.printNationality();
++        datStr.printStack();
++        datStr.printQueue();
++    }
++}

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d995681c-a229-49ee-bf06-3fbdc1f7fb28" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;empthree&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/empthree/CS121Portfolio.git&quot;,
+    &quot;accountId&quot;: &quot;187f60f8-eced-4cf5-a95d-8f4656edb411&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2l3vqefCa6jKBFfTSRpf7eut6pY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.ActivityOne.executor": "Run",
+    "Application.ActivityOneDialog.executor": "Run",
+    "Application.ArrayFromInput.executor": "Run",
+    "Application.BankAccount.executor": "Run",
+    "Application.BankAccountMain.executor": "Run",
+    "Application.BankAccountTest.executor": "Run",
+    "Application.BigOTest.executor": "Run",
+    "Application.BookClubPoints.executor": "Run",
+    "Application.CFTable.executor": "Run",
+    "Application.CharacterBattle.executor": "Run",
+    "Application.CopyArray.executor": "Run",
+    "Application.DistanceTraveled.executor": "Run",
+    "Application.EvenOrOdd.executor": "Run",
+    "Application.FileAppend.executor": "Run",
+    "Application.FileRead.executor": "Run",
+    "Application.FileWrite.executor": "Run",
+    "Application.Firstcodewithme.executor": "Run",
+    "Application.GuessingGame.executor": "Run",
+    "Application.LibraryUserTest.executor": "Run",
+    "Application.Login.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainPropertyListing.executor": "Run",
+    "Application.MovieSimulationOne.executor": "Run",
+    "Application.MovieSimulationThree.executor": "Run",
+    "Application.MovieSimulationTwo.executor": "Run",
+    "Application.PersonTest.executor": "Run",
+    "Application.Rectangle.executor": "Run",
+    "Application.RestaurantSelector.executor": "Run",
+    "Application.SelectionSortPractice.executor": "Run",
+    "Application.StudentTest.executor": "Run",
+    "Application.SwitchStatements.executor": "Run",
+    "Application.SystemTest.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.TestAbstractClasses.executor": "Run",
+    "Application.TestAverage.executor": "Run",
+    "Application.TestClass.executor": "Run",
+    "Application.TestCustomerInfo.executor": "Run",
+    "Application.TestInterfaces.executor": "Run",
+    "Application.TestScores.executor": "Run",
+    "Application.Triangles.executor": "Run",
+    "Application.TwoDimensionalArrays.executor": "Run",
+    "Application.WordGame.executor": "Run",
+    "Application.hashMap.Main.executor": "Run",
+    "Application.lol.executor": "Run",
+    "Application.main.executor": "Run",
+    "Application.project3.Main.executor": "Run",
+    "Application.projectTwo.TestScores.executor": "Run",
+    "Application.quiz5.executor": "Run",
+    "Application.weekFourteen.Main.executor": "Run",
+    "Application.weekThirteen.Main.executor": "Run",
+    "Application.weekThirteen.setAndIteratorActivity.Main.executor": "Run",
+    "Application.weekTwelve.labEleven.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ToolWindow.Pets.ShowToolbar": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/emmab/IdeaProjects/CS1211",
+    "onboarding.tips.debug.path": "C:/Users/emmab/IdeaProjects/ec ca 0/src/Main.java",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "vcs.Git"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\emmab\IdeaProjects\ec ca 0\src\weekTwelve\labEleven" />
+      <recent name="C:\Users\emmab\IdeaProjects\ec ca 0" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="weekFourteen" />
+      <recent name="weekTwelve.labEleven" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SelectionSortPractice">
+    <configuration name="BigOTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bigOActivity.BigOTest" />
+      <module name="CS121" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bigOActivity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="linkedListActivity.Main" />
+      <module name="CS121" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="linkedListActivity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SelectionSortPractice" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="project4.SelectionSortPractice" />
+      <module name="CS121" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project4.SelectionSortPractice" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SystemTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ArrayListDemo.SystemTest" />
+      <module name="CS121" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ArrayListDemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCustomerInfo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ArrayListDemo.TestCustomerInfo" />
+      <module name="CS121" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ArrayListDemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SelectionSortPractice" />
+        <item itemvalue="Application.BigOTest" />
+        <item itemvalue="Application.TestCustomerInfo" />
+        <item itemvalue="Application.SystemTest" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager">
+    <option name="remove_strategy" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d995681c-a229-49ee-bf06-3fbdc1f7fb28" name="Changes" comment="" />
+      <created>1724421767508</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724421767508</updated>
+    </task>
+    <servers />
+  </component>
+</project>
